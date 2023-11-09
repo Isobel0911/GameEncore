@@ -1,0 +1,518 @@
+Unity Editor version:    2021.3.29f1 (204d6dc9ae1c)
+Branch:                  2021.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 13.2.1 (Build 22D68)
+Darwin version:          22.3.0
+Architecture:            x86_64
+Running under Rosetta:   NO
+Available memory:        8192 MB
+Using pre-set license
+Pro License: YES
+
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/MacOS/Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+60900
+Successfully changed project path to: /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist
+/Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [140704570791552] Host "[IP] 10.52.92.93 [Port] 0 [Flags] 2 [Guid] 4143298763 [EditorId] 4143298763 [Version] 1048832 [Id] OSXEditor(0,weizexuanMacBook-Pro-2.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [140704570791552] Host "[IP] 10.52.92.93 [Port] 0 [Flags] 2 [Guid] 4143298763 [EditorId] 4143298763 [Version] 1048832 [Id] OSXEditor(0,weizexuanMacBook-Pro-2.local) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 441.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.29f1 (204d6dc9ae1c)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Color LCD preferred device: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+Metal devices available: 1
+0: Intel(R) Iris(TM) Plus Graphics 645 (low power)
+Using device Intel(R) Iris(TM) Plus Graphics 645 (low power)
+Initializing Metal device caps: Intel(R) Iris(TM) Plus Graphics 645
+Initialize mono
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56546
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.3.29f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.009354 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 365.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.299 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3300ms)
+		BeginReloadAssembly (532ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (2257ms)
+			LoadAssemblies (534ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (537ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (141ms)
+			SetupLoadedEditorAssemblies (1350ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (366ms)
+				BeforeProcessingInitializeOnLoad (5ms)
+				ProcessInitializeOnLoadAttributes (672ms)
+				ProcessInitializeOnLoadMethodAttributes (281ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.026467 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 378.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.954 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5958ms)
+		BeginReloadAssembly (547ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (34ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (98ms)
+		EndReloadAssembly (4866ms)
+			LoadAssemblies (416ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1557ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (317ms)
+			SetupLoadedEditorAssemblies (2354ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (16ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (379ms)
+				BeforeProcessingInitializeOnLoad (323ms)
+				ProcessInitializeOnLoadAttributes (1551ms)
+				ProcessInitializeOnLoadMethodAttributes (77ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (20ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launching external process: /Applications/Unity/Hub/Editor/2021.3.29f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.35 seconds
+Refreshing native plugins compatible for Editor in 1.76 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3603 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 38 unused Assets / (Unknown). Loaded Objects now: 4066.
+Memory consumption went from 125.6 MB to 125.6 MB.
+Total: 11.944154 ms (FindLiveObjects: 0.703096 ms CreateObjectMapping: 0.577346 ms MarkObjects: 10.280092 ms  DeleteObjects: 0.380993 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 368279.894893 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Roof_01.fbx
+  artifactKey: Guid(80ac437b35ae9244ca7882809da0a1d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Roof_01.fbx using Guid(80ac437b35ae9244ca7882809da0a1d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b835c4cc96425b10db268ae7d0c13ec') in 1.235654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000334 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Sidewalk_Straight_01.fbx
+  artifactKey: Guid(b46aef466a9bc89439bc4ed6e62b2ee7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Sidewalk_Straight_01.fbx using Guid(b46aef466a9bc89439bc4ed6e62b2ee7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba929cdd9eeffc651a169ea1c67a7f68') in 0.046480 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000151 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_03.fbx
+  artifactKey: Guid(69587846cdd3a28428f6cc947fb6d9ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_03.fbx using Guid(69587846cdd3a28428f6cc947fb6d9ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfef4661f54c67902653fbd869e16220') in 0.100760 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Roof_05.fbx
+  artifactKey: Guid(efd0c4f4d4af96a4ea5fbb4e1d136875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Roof_05.fbx using Guid(efd0c4f4d4af96a4ea5fbb4e1d136875) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5aeb4e4ef5f84c60572556147b5aa174') in 0.059475 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000154 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_01.fbx
+  artifactKey: Guid(3617ea9a7587b2442bf7691f77bc8202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_01.fbx using Guid(3617ea9a7587b2442bf7691f77bc8202) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0fb2c1a9ad6f83059ce8524d834552c') in 0.122912 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000527 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Roof_02.fbx
+  artifactKey: Guid(278973e67987e8841bea742a7ce46caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Roof_02.fbx using Guid(278973e67987e8841bea742a7ce46caf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bf6c391a1f555b87ff68a13e394ac52') in 0.065828 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000132 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Skylight_01.fbx
+  artifactKey: Guid(89ccc5700620ca34d826d17799c5406a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Skylight_01.fbx using Guid(89ccc5700620ca34d826d17799c5406a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9eb69e7757b2bf16672ad548c05030f') in 0.112702 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000148 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_01.fbx
+  artifactKey: Guid(41be92ec203d21c4291bb61842c5ff4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_01.fbx using Guid(41be92ec203d21c4291bb61842c5ff4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de0624426a70628a0843220dba45513c') in 0.121235 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Door_03.fbx
+  artifactKey: Guid(1e307198a690d134f89943277b7a5e58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Door_03.fbx using Guid(1e307198a690d134f89943277b7a5e58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2beb64c9ff056cc5f15fa0889c081a0') in 0.062680 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Door_01.fbx
+  artifactKey: Guid(eb38fb54ac326384491d086284a0c9e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Door_01.fbx using Guid(eb38fb54ac326384491d086284a0c9e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfaab67b34bdbc019fdf5d61eae54989') in 0.103888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000156 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_05.fbx
+  artifactKey: Guid(f548dad65e36c8b4f942289e5621fd02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_05.fbx using Guid(f548dad65e36c8b4f942289e5621fd02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c60524f9ac6f4077faf2514afc41421e') in 0.082617 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000191 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Door_02.fbx
+  artifactKey: Guid(6ada783ad4238de4db3fb73ee46bed9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Door_02.fbx using Guid(6ada783ad4238de4db3fb73ee46bed9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d7c17707f0b03aec47e43c162d6beea') in 0.108196 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000167 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Floor_02.fbx
+  artifactKey: Guid(b974388edddf2b84d8abe8a87b3e0785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Floor_02.fbx using Guid(b974388edddf2b84d8abe8a87b3e0785) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0e3a0f61f2f814773a58b192f4ed414') in 0.066915 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000129 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_02.fbx
+  artifactKey: Guid(8edd1068832994143b819c48bc08ed32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_02.fbx using Guid(8edd1068832994143b819c48bc08ed32) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccd72384e71498dc01ced9cfba089a6d') in 0.051973 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000833 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_02.fbx
+  artifactKey: Guid(c66e67fff86959a4b84c7423507196ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_02.fbx using Guid(c66e67fff86959a4b84c7423507196ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4df3a9051497ddc0d16621729ad7a22c') in 0.066705 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000135 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_04.fbx
+  artifactKey: Guid(000ad07c9d704664fabab8e89c828375) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_04.fbx using Guid(000ad07c9d704664fabab8e89c828375) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4537d243e724dbfb002c476025e67091') in 0.051835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_03.fbx
+  artifactKey: Guid(eba35cbcb952efa4aa819e482f42595d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_03.fbx using Guid(eba35cbcb952efa4aa819e482f42595d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45bdea1063616c1c2b0ac485f780a6b4') in 0.109233 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000138 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Roof_03.fbx
+  artifactKey: Guid(dc4982a70775a3a41bf0951d9edbe182) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Roof_03.fbx using Guid(dc4982a70775a3a41bf0951d9edbe182) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5db100bf8e612335eb6a077b5689f66b') in 0.056906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000466 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_04.fbx
+  artifactKey: Guid(d3fd13bdf9044bc419fb171e152cb1a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_04.fbx using Guid(d3fd13bdf9044bc419fb171e152cb1a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76da9aa0b3422b14179fbb34fb9371ad') in 0.086353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000142 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_01.fbx
+  artifactKey: Guid(bfc908ea4457b1841bf34271f9773cb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_01.fbx using Guid(bfc908ea4457b1841bf34271f9773cb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '832646d0474169adf0873101ba75e506') in 0.049690 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_01.fbx
+  artifactKey: Guid(9934688955d0d194b8292ece562d251f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_Light_01.fbx using Guid(9934688955d0d194b8292ece562d251f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f2dec181c1dde1eba494e28b3e5e864') in 0.056538 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004027 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_03.fbx
+  artifactKey: Guid(6833910ce69dae045b5afb366a3d7007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_03.fbx using Guid(6833910ce69dae045b5afb366a3d7007) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58a01eeec2b3a836b648a469f6708a11') in 0.050385 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000144 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_08.fbx
+  artifactKey: Guid(07d5d728dff4f034b83f522a9dac02ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_08.fbx using Guid(07d5d728dff4f034b83f522a9dac02ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '49f69faa347ccbdc9a6fbeebd0e740b8') in 0.056979 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.002505 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Steps_01.fbx
+  artifactKey: Guid(915499f4b22022f48b230ab07b48de07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Steps_01.fbx using Guid(915499f4b22022f48b230ab07b48de07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e7bf21402f354aabf46781f5d73058e') in 0.041840 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000190 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Railing_01.fbx
+  artifactKey: Guid(456dcee8a0c99cb4bb2ace5368251477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Railing_01.fbx using Guid(456dcee8a0c99cb4bb2ace5368251477) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '657e846383861d0b1216288a0c00ee2e') in 0.100202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000179 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_04.fbx
+  artifactKey: Guid(0aa5057960adbe644bdd472fcfa60944) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_04.fbx using Guid(0aa5057960adbe644bdd472fcfa60944) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '963db5c1840c82eef7bf08e48ae7f8a0') in 0.069672 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000365 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Roof_04.fbx
+  artifactKey: Guid(6afd322648f224d45a8362a9bb50ff6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Roof_04.fbx using Guid(6afd322648f224d45a8362a9bb50ff6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '724127fe9ab37cf03ec098ab3e2022e8') in 0.038629 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000178 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_07.fbx
+  artifactKey: Guid(6575a526fd23cc143ab84538caff3a13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_07.fbx using Guid(6575a526fd23cc143ab84538caff3a13) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4bdb438014c9a51ccc355ff0c1183e1') in 0.078843 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.004290 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_06.fbx
+  artifactKey: Guid(ccc59c83b31e52a4faa76d90e2d0be98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_06.fbx using Guid(ccc59c83b31e52a4faa76d90e2d0be98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63f517bbae36047e13fe1a13ccd48765') in 0.098311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001644 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Ceiling_03.fbx
+  artifactKey: Guid(27837c36d2d54e0469e37b85684424a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Ceiling_03.fbx using Guid(27837c36d2d54e0469e37b85684424a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38ae4514008f2b45bbe9f701029f1a5d') in 0.057983 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000724 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Stairway_01.fbx
+  artifactKey: Guid(56697cc4f12ad6b498179f3b6aa250d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Stairway_01.fbx using Guid(56697cc4f12ad6b498179f3b6aa250d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48f1cc74702785f813e33d97375ec01c') in 0.086064 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000399 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_02.fbx
+  artifactKey: Guid(38f81f36b9f927042aa55dd9056af028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_02.fbx using Guid(38f81f36b9f927042aa55dd9056af028) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aab6fe3d3cb15129f5610fe74365f75e') in 0.041646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000152 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Floor_01.fbx
+  artifactKey: Guid(c29fe2498c683b4408941f1943ffb88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Floor_01.fbx using Guid(c29fe2498c683b4408941f1943ffb88e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1afb65b639b7c4a9bd15067d646f2c19') in 0.081683 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_01.fbx
+  artifactKey: Guid(cdf4eee29ce6e1d4695c2530d3929d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_Floor_01.fbx using Guid(cdf4eee29ce6e1d4695c2530d3929d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2615d35804567a1581622966501a83a0') in 0.139537 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000141 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_01.fbx
+  artifactKey: Guid(5b529a1895e8da047a2ec6f1d0841ccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Exterior_01.fbx using Guid(5b529a1895e8da047a2ec6f1d0841ccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8acafb3e16f76b2ff1b893740307336') in 0.050621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000175 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_03.fbx
+  artifactKey: Guid(a3fef41b2345f2c4494790b3b65642a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Pillar_Interior_03.fbx using Guid(a3fef41b2345f2c4494790b3b65642a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bf850e39117c17532cd4a0406db006c') in 0.065870 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/PolygonHeist/Model/SM_Env_Road_01.fbx
+  artifactKey: Guid(edb4b86c217cdc34aaefa4a5354474c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/SM_Env_Road_01.fbx using Guid(edb4b86c217cdc34aaefa4a5354474c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea14f26e404a84dafce6696baf8a86fc') in 0.036349 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000147 seconds.
+  path: Assets/PolygonHeist/Model/Characters.fbx
+  artifactKey: Guid(16c4b6c36252ce14e8083291c9e774fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonHeist/Model/Characters.fbx using Guid(16c4b6c36252ce14e8083291c9e774fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '750f20514500bbd607353e9abbd4f613') in 0.876280 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008314 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  5.242 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5246ms)
+		BeginReloadAssembly (924ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (29ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (396ms)
+		EndReloadAssembly (3967ms)
+			LoadAssemblies (414ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (1535ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (213ms)
+			SetupLoadedEditorAssemblies (1694ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (20ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (208ms)
+				ProcessInitializeOnLoadAttributes (1368ms)
+				ProcessInitializeOnLoadMethodAttributes (87ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (18ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 5.53 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3595 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 17 unused Assets / (92.5 KB). Loaded Objects now: 4094.
+Memory consumption went from 144.2 MB to 144.1 MB.
+Total: 12.838296 ms (FindLiveObjects: 0.794052 ms CreateObjectMapping: 0.768574 ms MarkObjects: 10.948945 ms  DeleteObjects: 0.324205 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005339 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/jason/Desktop/GT/2023 fall/CS 6457/TeamProject/Heist/TestHeist/Library/PackageCache/com.unity.visualscripting@1.8.0/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 1.37 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.600 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2606ms)
+		BeginReloadAssembly (696ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (33ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (262ms)
+		EndReloadAssembly (1703ms)
+			LoadAssemblies (359ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (687ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (97ms)
+			SetupLoadedEditorAssemblies (627ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (93ms)
+				ProcessInitializeOnLoadAttributes (484ms)
+				ProcessInitializeOnLoadMethodAttributes (33ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 2.36 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3595 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 17 unused Assets / (92.5 KB). Loaded Objects now: 4109.
+Memory consumption went from 144.2 MB to 144.1 MB.
+Total: 6.308767 ms (FindLiveObjects: 0.550391 ms CreateObjectMapping: 0.416619 ms MarkObjects: 5.204871 ms  DeleteObjects: 0.134060 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
