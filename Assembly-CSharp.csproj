@@ -65,6 +65,10 @@
     <Compile Include="Assets/StarterAssets/ThirdPersonController/Scripts/BasicRigidBodyPush.cs" />
     <Compile Include="Assets/StarterAssets/TutorialInfo/Scripts/Readme.cs" />
     <Compile Include="Assets/StarterAssets/ThirdPersonController/Scripts/ThirdPersonController.cs" />
+    <Compile Include="Assets/ProgressBar/Script/ProgressBarCircle.cs" />
+    <Compile Include="Assets/ProgressBar/Script/ProgressBar.cs" />
+    <Compile Include="Assets/ProgressBar/Scene/Demo.cs" />
+    <Compile Include="Assets/AlertController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/StarterAssets/license.txt" />
