@@ -14,12 +14,13 @@ public class GameStarter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.P))
+            StartGame();
     }
 
     public void StartGame()
     {
-        SceneManager.LoadScene("demo");
+        SceneManager.LoadScene(1);
         Time.timeScale = 1f;
     }
 }
