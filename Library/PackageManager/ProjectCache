@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638354443503872951
+      ticks: 638354494797674754
     m_Hash: 3682792924
   m_LockFileStatus:
     m_FilePath: D:/Gatech/Fall2023/CS4455/Milestones/GameEncore/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638354443503880878
+      ticks: 638354494797684757
     m_Hash: 3803995607
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
