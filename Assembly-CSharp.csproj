@@ -41,6 +41,7 @@
      <Compile Include="Assets\AlertController.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
+     <Compile Include="Assets\Scripts\SafeAreaSetter.cs" />
      <Compile Include="Assets\ProgressBar\Script\ProgressBarCircle.cs" />
      <Compile Include="Assets\ProgressBar\Scene\Demo.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
@@ -49,7 +50,10 @@
      <Compile Include="Assets\StarterAssets\TutorialInfo\Scripts\Readme.cs" />
      <Compile Include="Assets\StarterAssets\ThirdPersonController\Scripts\ThirdPersonController.cs" />
      <Compile Include="Assets\ProgressBar\Script\ProgressBar.cs" />
-     <Compile Include="Assets\Scripts\SafeAreaSetter.cs" />
+     <Compile Include="Assets\Scripts\GameQuitter.cs" />
+     <Compile Include="Assets\Scripts\GameStarter.cs" />
+     <Compile Include="Assets\Scripts\EventManager.cs" />
+     <Compile Include="Assets\Scripts\PauseMenuToggle.cs" />
      <None Include="Assets\StarterAssets\license.txt" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Unity Hub\Editor\2021.3.29f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
