@@ -354,7 +354,7 @@
 "Assets/Scripts/EventManager.cs"
 "Assets/Scripts/GameQuitter.cs"
 "Assets/Scripts/GameStarter.cs"
-"Assets/Scripts/NPCcontroller.cs"
+"Assets/Scripts/NpcController.cs"
 "Assets/Scripts/PauseMenuToggle.cs"
 "Assets/Scripts/SafeAreaSetter.cs"
 "Assets/StarterAssets/InputSystem/StarterAssetsInputs.cs"

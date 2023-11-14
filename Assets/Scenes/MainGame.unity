@@ -16159,6 +16159,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 436788, guid: 5bbb03ef52f10cf46ae05dccff0aafbd, type: 3}
   m_PrefabInstance: {fileID: 1193084341}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &607088462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114769781544105922, guid: 5eefba205a58c8c4a937c97b87c185a3, type: 3}
+  m_PrefabInstance: {fileID: 63061477}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149d864443ddca94ba93b092e7acd5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &608273892 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 482510, guid: 7f333cb9343224d4db215d284fe05fae, type: 3}
@@ -59952,6 +59963,7 @@ GameObject:
   - component: {fileID: 2806548507694514803}
   - component: {fileID: 8555973474913744127}
   - component: {fileID: 5337526042350528655}
+  - component: {fileID: 8555973474913744128}
   m_Layer: 8
   m_Name: MainCharacterPlayerArmature
   m_TagString: Player
@@ -61344,6 +61356,20 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+--- !u!114 &8555973474913744128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337526042350528643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727ebad09ef2b4cb1ac768f62a97dbac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pb: {fileID: 607088462}
+  alert: 0
 --- !u!1 &8570119849333141253
 GameObject:
   m_ObjectHideFlags: 0

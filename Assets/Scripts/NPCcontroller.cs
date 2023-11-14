@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NPCcontroller : MonoBehaviour
+public class NpcController : MonoBehaviour
 {
     Animator animator;
     public GameObject MainCharacter;
-    public float alertValue;
-
+    public int alertValue;
+    public ProgressBar pb;
     void Start()
     {
         animator = GetComponent<Animator>();
-        MainCharacter = GameObject.Find("MainCharacterPlayerArmature");
-        alertValue = 0;
     }
 
     void Update()
@@ -21,7 +19,9 @@ public class NPCcontroller : MonoBehaviour
         Vector3 myPosition = transform.position;
         float distance = (myPosition - MainCharacterPosition).magnitude;
         if (distance <= 5) {
-            alertValue = (5 - distance) * 20;
+            alertValue = (int)((5 - distance) * 20);
+            pb.BarValue = alertValue;
+            
         }
     }
 }
