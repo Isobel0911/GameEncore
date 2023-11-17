@@ -355,6 +355,7 @@
 "Assets/ProgressBar/Script/ProgressBar.cs"
 "Assets/ProgressBar/Script/ProgressBarCircle.cs"
 "Assets/Scripts/AIPathNPC.cs"
+"Assets/Scripts/AISounds.cs"
 "Assets/Scripts/EventManager.cs"
 "Assets/Scripts/GameQuitter.cs"
 "Assets/Scripts/GameStarter.cs"
