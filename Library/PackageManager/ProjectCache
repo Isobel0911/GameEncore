@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638358355540000000
+      ticks: 638358579070000000
     m_Hash: 2013809210
   m_LockFileStatus:
     m_FilePath: /Users/dengisobel/Desktop/Fall23/CS4455/Team Project/GameEncore/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638358355540000000
+      ticks: 638358579070000000
     m_Hash: 518537651
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
