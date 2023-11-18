@@ -13730,6 +13730,7 @@ GameObject:
   - component: {fileID: 407201183}
   - component: {fileID: 407201182}
   - component: {fileID: 407201186}
+  - component: {fileID: 407201187}
   - component: {fileID: 407201185}
   m_Layer: 5
   m_Name: MenuButton
@@ -13875,6 +13876,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73700459798b6c44087e173a61aa3013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &407201187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407201179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9b3cb89299d07742a2876384aaa2360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &407535479
@@ -35133,7 +35146,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 9.1835e-41, y: NaN, z: 9.78048e-39, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

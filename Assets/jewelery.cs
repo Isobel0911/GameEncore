@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class jewelery : MonoBehaviour, IInteractable
+public class Jewelery : MonoBehaviour, IInteractable
 {
     [SerializeField] private string _prompt;
 
