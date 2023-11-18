@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    [SerializeField] private Animator _doorAnim;
+    private bool isClosed;
+    private bool isOpened;
+
     [SerializeField] private string _prompt;
 
     public string InteractionPrompt => _prompt;
@@ -15,12 +19,35 @@ public class Door : MonoBehaviour, IInteractable
     // Specify the distance from the hinge to the edge of the door
     public float distanceFromHinge = 0.5f;
 
+    void Start()
+    {
+        isClosed = true;
+        isOpened = false;
+    }
 
     public bool Interact(Interactor interactor)
     {
         var player = interactor.GetComponent<Inventory>();
+        if (isClosed) 
+        {
+            _doorAnim.SetBool("isClosed", true);
+            _doorAnim.SetBool("isOpened", false);
+            isClosed = false;
+            isOpened = true;
+
+        } else if (isOpened) 
+        {
+            _doorAnim.SetBool("isOpened", true);
+            _doorAnim.SetBool("isClosed", false);
+            isOpened = false;
+            isClosed = true;
+        }
+
+
         if (player.hasKey1)
         {
+            
+
             return true;
             // TODO: open the door
             //// Calculate the pivot point

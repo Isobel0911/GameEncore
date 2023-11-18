@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "GameEncore.sln"
+    "dotnet.defaultSolution": "Project.sln"
 }
