@@ -8,6 +8,15 @@ public class Door : MonoBehaviour, IInteractable
     private bool isClosed;
     private bool isOpened;
 
+
+
+
+    private bool opened;
+
+    private AudioSource audSrc;
+
+    [SerializeField] private AudioClip openSound, closeSound;
+
     [SerializeField] private string _prompt;
 
     public string InteractionPrompt => _prompt;
@@ -23,6 +32,10 @@ public class Door : MonoBehaviour, IInteractable
     {
         isClosed = true;
         isOpened = false;
+
+
+        audSrc = GetComponent<AudioSource>();
+        opened = false;
     }
 
     public bool Interact(Interactor interactor)
@@ -32,6 +45,7 @@ public class Door : MonoBehaviour, IInteractable
         {
             _doorAnim.SetBool("isClosed", true);
             _doorAnim.SetBool("isOpened", false);
+            audSrc.PlayOneShot(openSound);
             isClosed = false;
             isOpened = true;
 
@@ -39,6 +53,7 @@ public class Door : MonoBehaviour, IInteractable
         {
             _doorAnim.SetBool("isOpened", true);
             _doorAnim.SetBool("isClosed", false);
+            audSrc.PlayOneShot(closeSound);
             isOpened = false;
             isClosed = true;
         }
