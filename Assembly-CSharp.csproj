@@ -86,6 +86,7 @@
     <Compile Include="Assets/jewelery.cs" />
     <Compile Include="Assets/Door.cs" />
     <Compile Include="Assets/Inventory.cs" />
+    <Compile Include="Assets/KeyPlant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

@@ -12,8 +12,10 @@ public class CashNote : MonoBehaviour, IInteractable
     {
         var player = interactor.GetComponent<AlertController>();
         player.money += 100;
+        // TODO: if any NPC alert value > 30
+        // player.alert += 20;
 
-        Destroy(this);
+        Destroy(this.gameObject);
         return true;
     }
 }

@@ -355,6 +355,7 @@
 "Assets/Interactor.cs"
 "Assets/Inventory.cs"
 "Assets/jewelery.cs"
+"Assets/KeyPlant.cs"
 "Assets/NavMeshBaker.cs"
 "Assets/ProgressBar/Scene/Demo.cs"
 "Assets/ProgressBar/Script/ProgressBar.cs"

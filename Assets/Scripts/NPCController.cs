@@ -9,14 +9,17 @@ public class NPCController : MonoBehaviour
     public GameObject MainCharacter;
     public int alertValue;
     public ProgressBar pb;
+    public AlertController ac;
+
     void Start()
     {
+        ac = MainCharacter.GetComponent<AlertController>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        float decreaseConstant = 0.01f; // this is changed based on different people, caution factor
+        float decreaseConstant = 0.0001f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
 
@@ -27,51 +30,51 @@ public class NPCController : MonoBehaviour
         
         if (distance <= 10 && angle <= 90f) {
             if (distance > coverDistanceOnAngle) {
-                pb.BarValue -= decreaseConstant;
-                if (pb.BarValue < 0){
-                    pb.BarValue = 0;
+                ac.alert -= decreaseConstant;
+                if (ac.alert < 0){
+                    ac.alert = 0;
                 }
             }
             else {
                 if (CheckObstacle(myPosition, MainCharacterPosition, distance) == true) {
-                    pb.BarValue -= decreaseConstant;
-                    if (pb.BarValue < 0){
-                        pb.BarValue = 0;
+                    ac.alert -= decreaseConstant;
+                    if (ac.alert < 0){
+                        ac.alert = 0;
                     }
                 }
                 else {
                     if (Input.GetKey(KeyCode.E)) {
                         float calculatedAlertValue = (100 * (1f - distance / coverDistanceOnAngle));
-                        if (pb.BarValue < calculatedAlertValue) {
-                            pb.BarValue = calculatedAlertValue;
-                        } else if (pb.BarValue > calculatedAlertValue) {
-                            pb.BarValue = Math.Max(pb.BarValue - decreaseConstant, calculatedAlertValue);
+                        if (ac.alert < calculatedAlertValue) {
+                            ac.alert = calculatedAlertValue;
+                        } else if (ac.alert > calculatedAlertValue) {
+                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                         }
                     }
                     else if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                     {
                         float calculatedAlertValue = (50 * (1f - distance / coverDistanceOnAngle));
-                        if (pb.BarValue < calculatedAlertValue) {
-                            pb.BarValue = calculatedAlertValue;
-                        } else if (pb.BarValue > calculatedAlertValue) {
-                            pb.BarValue = Math.Max(pb.BarValue - decreaseConstant, calculatedAlertValue);
+                        if (ac.alert < calculatedAlertValue) {
+                            ac.alert = calculatedAlertValue;
+                        } else if (ac.alert > calculatedAlertValue) {
+                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                         }
                     }
                     else {
                         float calculatedAlertValue = (30 * (1f - distance / coverDistanceOnAngle));
-                        if (pb.BarValue < calculatedAlertValue) {
-                            pb.BarValue = calculatedAlertValue;
-                        } else if (pb.BarValue > calculatedAlertValue) {
-                            pb.BarValue = Math.Max(pb.BarValue - decreaseConstant, calculatedAlertValue);
+                        if (ac.alert < calculatedAlertValue) {
+                            ac.alert = calculatedAlertValue;
+                        } else if (ac.alert > calculatedAlertValue) {
+                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                         }
                     }
                 }
             }
         }
         else {
-            pb.BarValue -= decreaseConstant;
-            if (pb.BarValue < 0){
-                pb.BarValue = 0;
+            ac.alert -= decreaseConstant;
+            if (ac.alert < 0){
+                ac.alert = 0;
             }
         }
     }

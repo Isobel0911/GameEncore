@@ -13,7 +13,7 @@ public class jewelery : MonoBehaviour, IInteractable
         var player = interactor.GetComponent<AlertController>();
         player.money += 500;
 
-        Destroy(this);
+        Destroy(this.gameObject);
         return true;
     }
 }

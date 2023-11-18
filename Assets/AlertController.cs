@@ -5,7 +5,7 @@ using TMPro;
 public class AlertController : MonoBehaviour
 {
     public ProgressBar pb;
-    public int alert = 0;
+    public float alert = 0;
 
     public TMP_Text moneyText;
     public int money = 0;
@@ -20,6 +20,6 @@ public class AlertController : MonoBehaviour
     {
         moneyText.text = money.ToString();
 
-        pb.BarValue = alert;
+        pb.BarValue = (int) alert;
     }
 }
