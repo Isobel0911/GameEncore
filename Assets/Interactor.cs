@@ -7,7 +7,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private float _interactionPointRadius = 0.8f;
     [SerializeField] private LayerMask _interactionMask;
 
-    private readonly Collider[] _colliders = new Collider[3];
+    private readonly Collider[] _colliders = new Collider[4];
     [SerializeField] private int _numFound;
     
     private void Update()
@@ -18,6 +18,7 @@ public class Interactor : MonoBehaviour
         // take only one interactable
         if (_numFound > 0)
         {
+            Debug.Log("In interactor");
             var interactble = _colliders[0].GetComponent<IInteractable>();
 
             if (interactble != null && Input.GetKeyDown(KeyCode.E))

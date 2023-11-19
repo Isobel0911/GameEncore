@@ -9,7 +9,11 @@ public class KeyPlant : MonoBehaviour, IInteractable
     public string InteractionPrompt => _prompt;
 
     public bool Interact(Interactor interactor)
-    {
+    {   
+        // if (gameObject.CompareTag("collectable")) {
+        //     //TODO: Do animation pick up
+
+        // }
         var player = interactor.GetComponent<Inventory>();
         player.hasKey1 = true;
         // TODO:  提示玩家已经找到钥匙

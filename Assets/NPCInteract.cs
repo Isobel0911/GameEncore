@@ -16,4 +16,8 @@ public class NPCInteract : MonoBehaviour, IInteractable
         FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         return true;
     }
+
+    void Start() {
+        Debug.Log("Start the NPC Script");
+    }
  }
