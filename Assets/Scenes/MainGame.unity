@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18035269, g: 0.22578935, b: 0.30702615, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028411, g: 0.22571424, b: 0.306924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -9310,7 +9310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1536977051110240, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_Name
-      value: Celine
+      value: Standing_Celine
       objectReference: {fileID: 0}
     - target: {fileID: 1536977051110240, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_Layer
@@ -10274,7 +10274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12662,7 +12662,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1581076946637682, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_Name
-      value: Jess
+      value: Sitting_Jess
       objectReference: {fileID: 0}
     - target: {fileID: 1581076946637682, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_Layer
@@ -12750,7 +12750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14125,7 +14125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1536977051110240, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_Name
-      value: Messy
+      value: Standing_Messy
       objectReference: {fileID: 0}
     - target: {fileID: 1536977051110240, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_Layer
@@ -15089,7 +15089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20363,7 +20363,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1070309920336596, guid: da9a9fd4047bf8d4393decf48f749e7a, type: 3}
       propertyPath: m_Name
-      value: FBI_Male_01
+      value: Walking_FBI_01
       objectReference: {fileID: 0}
     - target: {fileID: 1070309920336596, guid: da9a9fd4047bf8d4393decf48f749e7a, type: 3}
       propertyPath: m_IsActive
@@ -20371,7 +20371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799609714773312, guid: da9a9fd4047bf8d4393decf48f749e7a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4799609714773312, guid: da9a9fd4047bf8d4393decf48f749e7a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26626,7 +26626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4910906005115920, guid: de451e8bbc589b24bbfba6ad560b0751, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4910906005115920, guid: de451e8bbc589b24bbfba6ad560b0751, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27103,7 +27103,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1378619452068504, guid: 73552df2d1e4ec6488592297ea9651fd, type: 3}
       propertyPath: m_Name
-      value: Boss_Male_01
+      value: Sitting_Boss_01
       objectReference: {fileID: 0}
     - target: {fileID: 4002647445124988, guid: 73552df2d1e4ec6488592297ea9651fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27607,7 +27607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4453757389777166, guid: 73552df2d1e4ec6488592297ea9651fd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4453757389777166, guid: 73552df2d1e4ec6488592297ea9651fd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28318,6 +28318,20 @@ MonoBehaviour:
   alertValue: 0
   pb: {fileID: 51415046}
   ac: {fileID: 0}
+--- !u!136 &713679747
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713679739}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!4 &715449208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 471746, guid: ae1644867a2400a4d8cb2486d081859b, type: 3}
@@ -35797,11 +35811,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1536977051110240, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_Name
-      value: FBI_Female_03
+      value: Walking_FBI_03
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4852148067032720, guid: e409feda7fe1b784fb6ea577599c96ac, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37295,7 +37309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -39106,21 +39120,21 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 313179871}
+  - {fileID: 82444153}
   - {fileID: 1457366465}
-  - {fileID: 1204785671}
-  - {fileID: 1694460185}
-  - {fileID: 713679742}
-  - {fileID: 1488930659}
   - {fileID: 1743519360}
   - {fileID: 1209763817}
-  - {fileID: 313179871}
   - {fileID: 981307589}
   - {fileID: 1802928951}
+  - {fileID: 1694460185}
+  - {fileID: 1204785671}
+  - {fileID: 713679742}
+  - {fileID: 1488930659}
+  - {fileID: 1544871637}
   - {fileID: 1103536875}
   - {fileID: 705448431}
   - {fileID: 1016594528}
-  - {fileID: 1544871637}
-  - {fileID: 82444153}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -39195,7 +39209,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4910906005115920, guid: de451e8bbc589b24bbfba6ad560b0751, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4910906005115920, guid: de451e8bbc589b24bbfba6ad560b0751, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42421,7 +42435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1172691280308000, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_Name
-      value: Banker_Male_01
+      value: Sitting_Banker_02
       objectReference: {fileID: 0}
     - target: {fileID: 1172691280308000, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_Layer
@@ -42673,7 +42687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4551167222936804, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4551167222936804, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42807,6 +42821,20 @@ MonoBehaviour:
   messages: []
   actors: []
   _prompt: 
+--- !u!136 &1204785679
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204785672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &1206694261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43050,13 +43078,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1098453143}
     m_Modifications:
+    - target: {fileID: 124144, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 190900, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
+      propertyPath: m_Name
+      value: Walking_FBI_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 190900, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 199472, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
       propertyPath: m_Name
-      value: FBI_Male_02
+      value: Walking_FBI_02
       objectReference: {fileID: 0}
     - target: {fileID: 440362, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 440362, guid: 7ff387e26f5e0ca4ca737283862d87ca, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52320,11 +52360,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1585754312743788, guid: ee9b0e31b831a8241ba9b5d7a66f224b, type: 3}
       propertyPath: m_Name
-      value: Banker_Female_01
+      value: Walking_Banker_01
       objectReference: {fileID: 0}
     - target: {fileID: 4947739271392710, guid: ee9b0e31b831a8241ba9b5d7a66f224b, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4947739271392710, guid: ee9b0e31b831a8241ba9b5d7a66f224b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53674,7 +53714,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1581076946637682, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_Name
-      value: Boss_Female_01
+      value: Sitting_Boss_02
       objectReference: {fileID: 0}
     - target: {fileID: 4043620584369026, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -53874,7 +53914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4145582312930602, guid: e248ea66ca7bc964fba722018f5e1f16, type: 3}
       propertyPath: m_LocalPosition.x
@@ -54881,6 +54921,20 @@ MonoBehaviour:
   alertValue: 0
   pb: {fileID: 51415046}
   ac: {fileID: 0}
+--- !u!136 &1488930665
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488930660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &1489968715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56793,6 +56847,20 @@ MonoBehaviour:
   messages: []
   actors: []
   _prompt: 
+--- !u!136 &1544871644
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544871636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &1545146299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62640,7 +62708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1172691280308000, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_Name
-      value: Jack
+      value: Sitting_Jack
       objectReference: {fileID: 0}
     - target: {fileID: 1172691280308000, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_Layer
@@ -62892,7 +62960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4551167222936804, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4551167222936804, guid: f1e90a3ca4920454182e460c2ca03e23, type: 3}
       propertyPath: m_LocalPosition.x
@@ -63024,12 +63092,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - actorId: 2
+  - actorId: 1
     message: Hi?
   - actorId: 0
     message: Execuse me
-  actors: []
+  actors:
+  - name: You
+    sprite: {fileID: 21300000, guid: c69600b08ecec4fe598be3b3bc742561, type: 3}
+  - name: Jack
+    sprite: {fileID: 21300000, guid: b712df8b8b34b4ac5b196af79194617c, type: 3}
   _prompt: 
+--- !u!136 &1694460193
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694460186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 1.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &1695307501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66290,11 +66376,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1821533341055744, guid: af8fae8c118bd3c46b57ac048e01d509, type: 3}
       propertyPath: m_Name
-      value: FBI_Female_04
+      value: Walking_FBI_04
       objectReference: {fileID: 0}
     - target: {fileID: 4282790984036886, guid: af8fae8c118bd3c46b57ac048e01d509, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4282790984036886, guid: af8fae8c118bd3c46b57ac048e01d509, type: 3}
       propertyPath: m_LocalPosition.x
