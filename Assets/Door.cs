@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
 {
+    [SerializeField] private Animator _doorAnim;
+    private bool isClosed;
+    private bool isOpened;
+
+
+
+
+    private bool opened;
+
+    private AudioSource audSrc;
+
+    [SerializeField] private AudioClip openSound, closeSound;
+
     [SerializeField] private string _prompt;
 
     public string InteractionPrompt => _prompt;
@@ -15,28 +28,57 @@ public class Door : MonoBehaviour, IInteractable
     // Specify the distance from the hinge to the edge of the door
     public float distanceFromHinge = 0.5f;
 
+    void Start()
+    {
+        isClosed = true;
+        isOpened = false;
+
+
+        audSrc = GetComponent<AudioSource>();
+        opened = false;
+    }
 
     public bool Interact(Interactor interactor)
     {
         var player = interactor.GetComponent<Inventory>();
-        if (player.hasKey1)
+        if (isClosed && player.hasKey1) 
         {
-            return true;
-            // TODO: open the door
-            //// Calculate the pivot point
-            //Vector3 pivot = transform.position - transform.TransformDirection(rotationAxis) * distanceFromHinge;
+            _doorAnim.SetBool("isClosed", true);
+            _doorAnim.SetBool("isOpened", false);
+            audSrc.PlayOneShot(openSound);
+            isClosed = false;
+            isOpened = true;
 
-            //// Calculate the target rotation based on the rotation speed and time
-            //Quaternion targetRotation = transform.rotation * Quaternion.Euler(rotationAxis * 90f);
-            //// Rotate the door gradually over time
-            //while (transform.rotation != targetRotation)
-            //{
-            //    transform.RotateAround(pivot, rotationAxis, rotationSpeed * Time.deltaTime);
-            //}
-        } else
+        } else if (isOpened) 
         {
-            return false;
+            _doorAnim.SetBool("isOpened", true);
+            _doorAnim.SetBool("isClosed", false);
+            audSrc.PlayOneShot(closeSound);
+            isOpened = false;
+            isClosed = true;
         }
+
+
+        // if (player.hasKey1)
+        // {
+            
+
+        //     return true;
+        //     // TODO: open the door
+        //     //// Calculate the pivot point
+        //     //Vector3 pivot = transform.position - transform.TransformDirection(rotationAxis) * distanceFromHinge;
+
+        //     //// Calculate the target rotation based on the rotation speed and time
+        //     //Quaternion targetRotation = transform.rotation * Quaternion.Euler(rotationAxis * 90f);
+        //     //// Rotate the door gradually over time
+        //     //while (transform.rotation != targetRotation)
+        //     //{
+        //     //    transform.RotateAround(pivot, rotationAxis, rotationSpeed * Time.deltaTime);
+        //     //}
+        // } else
+        // {
+        //     return false;
+        // }
 
         return true;
     }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine;
 using UnityEditor; // This is only for use within the Unity Editor
 using System.Linq;
 
