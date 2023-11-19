@@ -41,7 +41,7 @@ public class Door : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)
     {
         var player = interactor.GetComponent<Inventory>();
-        if (isClosed) 
+        if (isClosed && player.hasKey1) 
         {
             _doorAnim.SetBool("isClosed", true);
             _doorAnim.SetBool("isOpened", false);
@@ -59,26 +59,26 @@ public class Door : MonoBehaviour, IInteractable
         }
 
 
-        if (player.hasKey1)
-        {
+        // if (player.hasKey1)
+        // {
             
 
-            return true;
-            // TODO: open the door
-            //// Calculate the pivot point
-            //Vector3 pivot = transform.position - transform.TransformDirection(rotationAxis) * distanceFromHinge;
+        //     return true;
+        //     // TODO: open the door
+        //     //// Calculate the pivot point
+        //     //Vector3 pivot = transform.position - transform.TransformDirection(rotationAxis) * distanceFromHinge;
 
-            //// Calculate the target rotation based on the rotation speed and time
-            //Quaternion targetRotation = transform.rotation * Quaternion.Euler(rotationAxis * 90f);
-            //// Rotate the door gradually over time
-            //while (transform.rotation != targetRotation)
-            //{
-            //    transform.RotateAround(pivot, rotationAxis, rotationSpeed * Time.deltaTime);
-            //}
-        } else
-        {
-            return false;
-        }
+        //     //// Calculate the target rotation based on the rotation speed and time
+        //     //Quaternion targetRotation = transform.rotation * Quaternion.Euler(rotationAxis * 90f);
+        //     //// Rotate the door gradually over time
+        //     //while (transform.rotation != targetRotation)
+        //     //{
+        //     //    transform.RotateAround(pivot, rotationAxis, rotationSpeed * Time.deltaTime);
+        //     //}
+        // } else
+        // {
+        //     return false;
+        // }
 
         return true;
     }
