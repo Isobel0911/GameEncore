@@ -79,7 +79,7 @@ public class NPCController : MonoBehaviour
         }
     }
 
-    bool CheckObstacle(Vector3 from, Vector3 to, float distance)
+        bool CheckObstacle(Vector3 from, Vector3 to, float distance)
     {
         RaycastHit hit;
         if (Physics.Raycast(from, to - from, out hit, distance))

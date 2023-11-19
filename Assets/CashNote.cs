@@ -18,4 +18,5 @@ public class CashNote : MonoBehaviour, IInteractable
         Destroy(this.gameObject);
         return true;
     }
+
 }
