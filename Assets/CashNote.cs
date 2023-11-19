@@ -8,10 +8,12 @@ public class CashNote : MonoBehaviour, IInteractable
 
     public string InteractionPrompt => _prompt;
 
-    public bool Interact(Interactor interactor)
+    public int value;
+
+    public bool Interact(Interactor interacdtor)
     {
         var player = interactor.GetComponent<AlertController>();
-        player.money += 100;
+        player.money += value;
         // TODO: if any NPC alert value > 30
         // player.alert += 20;
 
