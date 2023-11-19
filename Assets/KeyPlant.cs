@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class KeyPlant : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _prompt;
+    public Message[] messages;
+    public Actor[] actors;
 
+    [SerializeField] private string _prompt;
     public string InteractionPrompt => _prompt;
 
     public bool Interact(Interactor interactor)
     {   
-        // if (gameObject.CompareTag("collectable")) {
-        //     //TODO: Do animation pick up
-
-        // }
+        Debug.Log("found the key");
         var player = interactor.GetComponent<Inventory>();
         player.hasKey1 = true;
-        // TODO:  提示玩家已经找到钥匙
+        Debug.Log("NPC Interact");
+        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         return true;
     }
 }

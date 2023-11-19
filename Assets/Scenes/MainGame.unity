@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028411, g: 0.22571424, b: 0.306924, a: 1}
+  m_IndirectSpecularColor: {r: 0.18035269, g: 0.22578935, b: 0.30702615, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &4
 LightmapSettings:
@@ -47501,6 +47501,10 @@ PrefabInstance:
       value: SM_Prop_Plant_13
       objectReference: {fileID: 0}
     - target: {fileID: 119704, guid: 9d84a7d988251ec4fa19223b92083a24, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 119704, guid: 9d84a7d988251ec4fa19223b92083a24, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
@@ -47599,6 +47603,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 475868, guid: 88f568977f13ae0438cf940abe674b29, type: 3}
   m_PrefabInstance: {fileID: 409920346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1332719026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 119704, guid: 9d84a7d988251ec4fa19223b92083a24, type: 3}
+  m_PrefabInstance: {fileID: 1330524233}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1332728072
 PrefabInstance:
@@ -56844,8 +56853,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feb89aa3250147b290bad76ac9bb2b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messages: []
-  actors: []
+  messages:
+  - actorId: 1
+    message: What can I do for you?
+  - actorId: 0
+    message: '**an hao**'
+  - actorId: 1
+    message: Ok, You should find a way to get a ID card to the security office. In
+      that office will have the document *that* man wants.
+  - actorId: 1
+    message: Sometimes some staff will leave theirs in plants. Check out the plants
+      in the building to see if you got the luck to get one.
+  actors:
+  - name: You
+    sprite: {fileID: 21300000, guid: c69600b08ecec4fe598be3b3bc742561, type: 3}
+  - name: Jess
+    sprite: {fileID: 21300000, guid: 490608e77c184432ba2e63851fca4598, type: 3}
   _prompt: 
 --- !u!136 &1544871644
 CapsuleCollider:
@@ -56857,10 +56880,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1.5
+  m_Radius: 0.49873757
+  m_Height: 1.7940168
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: -0.00000035762787, y: 0.9470035, z: 0.24873757}
 --- !u!1001 &1545146299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69255,24 +69278,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88f568977f13ae0438cf940abe674b29, type: 3}
---- !u!1 &1876332927 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137078, guid: a3516e53983593c4cb4a50626dac4968, type: 3}
-  m_PrefabInstance: {fileID: 1341877458}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1876332931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876332927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b491693793b4a4644a6de9c60b4ce8bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prompt: 
 --- !u!1001 &1877119688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73245,6 +73250,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 478868, guid: 9d84a7d988251ec4fa19223b92083a24, type: 3}
   m_PrefabInstance: {fileID: 1330524233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2016541694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1332719026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b491693793b4a4644a6de9c60b4ce8bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messages:
+  - actorId: 0
+    message: You have found the ID card for office of Security
+  actors:
+  - name: ID Card
+    sprite: {fileID: 21300000, guid: a4046ca79ae03421c9131fd460f4d334, type: 3}
+  _prompt: 
 --- !u!1001 &2017416140
 PrefabInstance:
   m_ObjectHideFlags: 0
