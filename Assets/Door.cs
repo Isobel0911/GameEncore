@@ -8,11 +8,6 @@ public class Door : MonoBehaviour, IInteractable
     private bool isClosed;
     private bool isOpened;
 
-
-
-
-    private bool opened;
-
     private AudioSource audSrc;
 
     [SerializeField] private AudioClip openSound, closeSound;
@@ -35,7 +30,6 @@ public class Door : MonoBehaviour, IInteractable
 
 
         audSrc = GetComponent<AudioSource>();
-        opened = false;
     }
 
     public bool Interact(Interactor interactor)

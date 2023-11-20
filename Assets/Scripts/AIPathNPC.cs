@@ -210,8 +210,8 @@ public class AIPathNPC : MonoBehaviour {
 
     private void updateSoundVolume() {
         float distance = Vector3.Distance(transform.position, playerTransform.position);
-        distance = Mathf.Clamp(distance, 0.01f, 5.0f);
+        distance = Mathf.Clamp(distance, 0.01f, 10.0f);
 
-        audioSource.volume = 1 - ((distance - 01f) / (5.0f - 01f));
+        audioSource.volume = 1 - ((distance - 01f) / (10.0f - 01f));
     }
 }

@@ -13,15 +13,15 @@ public class RoomSoundController : MonoBehaviour {
     private bool[][] npc;
     private bool[] allMain;
     private int detectorCount = 0;
-    private string name;
+    private string currObjectName;
     private static bool switchState = false;
     private static bool[] counter;
     private bool localState = false;
     private static bool[] states;
     public int idx;
 
-    private int ExtractNumber(string name) {
-        Match match = Regex.Match(name, @"\d+");
+    private int ExtractNumber(string givenName) {
+        Match match = Regex.Match(givenName, @"\d+");
         if (match.Success) {
             return int.Parse(match.Value);
         }
@@ -29,7 +29,7 @@ public class RoomSoundController : MonoBehaviour {
     }
 
     void Start() {
-        name = gameObject.name;
+        currObjectName = gameObject.name;
         List<BoxCollider> detectorList = new List<BoxCollider>();
         List<Transform> children = new List<Transform>();
 
@@ -104,17 +104,17 @@ public class RoomSoundController : MonoBehaviour {
 
     public void ableMain(int i) { allMain[i] = true; }
     public void disableMain(int i) { allMain[i] = false; }
-    public void ableNPC(string name, int idx) {
+    public void ableNPC(string collidingNPCName, int idx) {
         for (int i = 0; i < NPCs.Count; i++) {
-            if (NPCs[i].name == name) {
+            if (NPCs[i].name == collidingNPCName) {
                 npc[i][idx] = true;
                 return;
             }
         }
     }
-    public void disableNPC(string name, int idx) {
+    public void disableNPC(string collidingNPCName, int idx) {
         for (int i = 0; i < NPCs.Count; i++) {
-            if (NPCs[i].name == name) {
+            if (NPCs[i].name == collidingNPCName) {
                 npc[i][idx] = false;
                 return;
             }
@@ -125,7 +125,7 @@ public class RoomSoundController : MonoBehaviour {
             if(allMain[j]) return true;
         return false;
     }
-    public string getName() {return name;}
+    public string getName() {return currObjectName;}
     bool checkCounter() {
         for (int i = 0; i < counter.Length; i++) {
             if (!counter[i]) return false;

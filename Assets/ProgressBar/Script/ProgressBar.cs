@@ -54,11 +54,11 @@ public class ProgressBar : MonoBehaviour
         barBackground = GetComponent<Image>();
         txtTitle = transform.Find("Text").GetComponent<Text>();
         barBackground = transform.Find("BarBackground").GetComponent<Image>();
-        audiosource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         txtTitle.text = Title;
         txtTitle.color = TitleColor;
         txtTitle.font = TitleFont;
@@ -69,8 +69,6 @@ public class ProgressBar : MonoBehaviour
         barBackground.sprite = BarBackGroundSprite;
 
         UpdateValue(barValue);
-
-
     }
 
     void UpdateValue(float val)
