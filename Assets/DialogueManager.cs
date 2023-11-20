@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
     void Update() 
     {
         // press space to proceed next message
-        if (Input.GetMouseButtonDown(0) && isActive) {
+        if (Input.GetKeyDown(KeyCode.Tab) && isActive) {
             NextMessage();
         }
     }

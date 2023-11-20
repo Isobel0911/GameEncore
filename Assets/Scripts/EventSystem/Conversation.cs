@@ -19,7 +19,7 @@ public class Conversation : MonoBehaviour
     // To add a sentence, simply append it to list, no need to change other places.
     
     // === Conversation Conversation Sentences ===
-    List<string> introConversation = new()
+    public List<string> introConversation = new()
     {
         "You know who I am.",
         "[Ironic chuckling] How's your night in casino yesterday? Did you got enough to pay me back?",
@@ -33,7 +33,7 @@ public class Conversation : MonoBehaviour
     };
 
     // === Instruction Conversation Sentences ===
-    List<string> instructionConversation = new()
+    public List<string> instructionConversation = new()
     {
         "Good. You are here. Let's measure your capability first.",
         "Go grab some valuables. Some doors may be locked, so you must find the keys yourself.",
