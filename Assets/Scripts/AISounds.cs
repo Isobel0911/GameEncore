@@ -10,10 +10,11 @@ public class AISounds : MonoBehaviour {
     
     private AudioClip LandingAudioClip;
     private AudioClip[] FootstepAudioClips;
-    private AudioSource audioSource;
+    private AudioSource audioSource = null;
     private bool isInitialized = false;
 
-    void Update() {
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
         if (isInitialized) return;
         isInitialized = true;
         string footstepPath = "Assets/StarterAssets/ThirdPersonController/Character/Sfx";
@@ -29,21 +30,24 @@ public class AISounds : MonoBehaviour {
             FootstepAudioClips[i] = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/{footstepClipNames}{i+1}.wav");
         }
         FootstepAudioClips[9] = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/Player_Footstep_10.wav");
-        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnFootstep(AnimationEvent animationEvent) {
-        if (animationEvent.animatorClipInfo.weight > 0.5f) {
-            if (FootstepAudioClips.Length > 0) {
-                var index = Random.Range(0, FootstepAudioClips.Length);
-                AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.position, 1); // Use the class name here
+        if (audioSource.enabled) {
+            if (animationEvent.animatorClipInfo.weight > 0.5f) {
+                if (FootstepAudioClips.Length > 0) {
+                    var index = Random.Range(0, FootstepAudioClips.Length);
+                    audioSource.PlayOneShot(FootstepAudioClips[index], 1f);
+                }
             }
         }
     }
 
     private void OnLand(AnimationEvent animationEvent) {
-        if (animationEvent.animatorClipInfo.weight > 0.5f) {
-            AudioSource.PlayClipAtPoint(LandingAudioClip, transform.position, 1); // Use the class name here
+        if (audioSource.enabled) {
+            if (animationEvent.animatorClipInfo.weight > 0.5f) {
+                audioSource.PlayOneShot(LandingAudioClip, 1f);
+            }
         }
     }
 
