@@ -19,7 +19,7 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
-        float decreaseConstant = 0.0001f; // this is changed based on different people, caution factor
+        float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
 
@@ -28,45 +28,37 @@ public class NPCController : MonoBehaviour
         float coverDistanceOnAngle = angle * (-0.0556f) + 10f;
 
         
-        if (distance <= 10 && angle <= 90f) {
-            if (distance > coverDistanceOnAngle) {
+        if (distance <= coverDistanceOnAngle && angle <= 90f) {
+            if (CheckObstacle(myPosition, MainCharacterPosition, distance) == true) {
                 ac.alert -= decreaseConstant;
                 if (ac.alert < 0){
                     ac.alert = 0;
                 }
             }
             else {
-                if (CheckObstacle(myPosition, MainCharacterPosition, distance) == true) {
-                    ac.alert -= decreaseConstant;
-                    if (ac.alert < 0){
-                        ac.alert = 0;
+                // if (Input.GetKey(KeyCode.E)) {
+                //     float calculatedAlertValue = (100 * (1f - distance / coverDistanceOnAngle));
+                //     if (ac.alert < calculatedAlertValue) {
+                //         ac.alert = calculatedAlertValue;
+                //     } else if (ac.alert > calculatedAlertValue) {
+                //         ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
+                //     }
+                // }
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                {
+                    float calculatedAlertValue = (50 * (1f - distance / coverDistanceOnAngle));
+                    if (ac.alert < calculatedAlertValue) {
+                        ac.alert = calculatedAlertValue;
+                    } else if (ac.alert > calculatedAlertValue) {
+                        ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                     }
                 }
                 else {
-                    if (Input.GetKey(KeyCode.E)) {
-                        float calculatedAlertValue = (100 * (1f - distance / coverDistanceOnAngle));
-                        if (ac.alert < calculatedAlertValue) {
-                            ac.alert = calculatedAlertValue;
-                        } else if (ac.alert > calculatedAlertValue) {
-                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
-                        }
-                    }
-                    else if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-                    {
-                        float calculatedAlertValue = (50 * (1f - distance / coverDistanceOnAngle));
-                        if (ac.alert < calculatedAlertValue) {
-                            ac.alert = calculatedAlertValue;
-                        } else if (ac.alert > calculatedAlertValue) {
-                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
-                        }
-                    }
-                    else {
-                        float calculatedAlertValue = (30 * (1f - distance / coverDistanceOnAngle));
-                        if (ac.alert < calculatedAlertValue) {
-                            ac.alert = calculatedAlertValue;
-                        } else if (ac.alert > calculatedAlertValue) {
-                            ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
-                        }
+                    float calculatedAlertValue = (30 * (1f - distance / coverDistanceOnAngle));
+                    if (ac.alert < calculatedAlertValue) {
+                        ac.alert = calculatedAlertValue;
+                    } else if (ac.alert > calculatedAlertValue) {
+                        ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                     }
                 }
             }

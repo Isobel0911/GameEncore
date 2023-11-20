@@ -14,8 +14,11 @@ public class CashNote : MonoBehaviour, IInteractable
     {
         var player = interactor.GetComponent<AlertController>();
         player.money += value;
-        // TODO: if any NPC alert value > 30
-        // player.alert += 20;
+        player.alert = Mathf.Min(100, player.alert * 2);
+
+
+        MainCharacterPickUp script = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").GetComponent<MainCharacterPickUp>();
+        script.Collect(transform.position.y);
 
         Destroy(this.gameObject);
         return true;

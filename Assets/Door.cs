@@ -35,7 +35,7 @@ public class Door : MonoBehaviour, IInteractable
     public bool Interact(Interactor interactor)
     {
         Debug.Log("Interacted");
-        var player = interactor.GetComponent<Inventory>();
+        var player = interactor.GetComponent<InventorySelf>();
         if (isClosed && player.hasKey1) 
         {
             _doorAnim.SetBool("isClosed", true);

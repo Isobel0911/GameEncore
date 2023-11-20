@@ -18,7 +18,7 @@ public class Interactor : MonoBehaviour
         // take only one interactable
         if (_numFound > 0)
         {
-            Debug.Log("In interactor");
+            //Debug.Log("In interactor");
             var interactble = _colliders[0].GetComponent<IInteractable>();
 
             if (interactble != null && Input.GetKeyDown(KeyCode.E))
