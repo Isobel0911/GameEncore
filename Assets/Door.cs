@@ -40,6 +40,7 @@ public class Door : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {
+        Debug.Log("Interacted");
         var player = interactor.GetComponent<Inventory>();
         if (isClosed && player.hasKey1) 
         {
