@@ -18,6 +18,6 @@ public class NPCInteract : MonoBehaviour, IInteractable
     }
 
     void Start() {
-        Debug.Log("Start the NPC Script");
+        // Debug.Log("Start the NPC Script");
     }
  }

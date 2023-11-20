@@ -10,7 +10,7 @@ public class CashNote : MonoBehaviour, IInteractable
 
     public int value;
 
-    public bool Interact(Interactor interacdtor)
+    public bool Interact(Interactor interactor)
     {
         var player = interactor.GetComponent<AlertController>();
         player.money += value;
