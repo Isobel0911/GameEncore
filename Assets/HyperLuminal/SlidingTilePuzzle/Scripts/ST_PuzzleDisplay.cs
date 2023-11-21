@@ -232,6 +232,7 @@ public class ST_PuzzleDisplay : MonoBehaviour
 		// if we are still complete then all the tiles are correct.
 		if(Complete)
 		{
+			PuzzleInteract.hasSolved = true;
 			Debug.Log("Puzzle Complete!");
 		}
 
