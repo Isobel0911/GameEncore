@@ -243,13 +243,12 @@ public class AIPathNPC : MonoBehaviour {
             currentWaypointIdx = (currentWaypointIdx + 1) % waypoints.Length;
             prevWaypointIdx = (prevWaypointIdx + 1) % waypoints.Length;
             count++;
-            if (count > waypoints.Length) {
+            if (count > waypoints.Length + 1) {
                 pathInvalid = true;
-                navMeshAgent.isStopped = true;
+                navMeshAgent.SetDestination(transform.position);
                 return;
             }
         } while (!pathCheck());
         pathInvalid = false;
-        navMeshAgent.isStopped = false;
     }
 }
