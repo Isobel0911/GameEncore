@@ -27,6 +27,9 @@ public class Door : MonoBehaviour, IInteractable
     // Specify the distance from the hinge to the edge of the door
     public float distanceFromHinge = 0.5f;
 
+    private int layerIndex = 0;
+    private bool hasChecked = false;
+
     void Start()
     {
         isClosed = true;
@@ -81,6 +84,18 @@ public class Door : MonoBehaviour, IInteractable
         // }
 
         return true;
+    }
+
+    private void Update() {
+        if (_doorAnim.IsInTransition(layerIndex)) {hasChecked = false; return;}
+        AnimatorStateInfo stateInfo = _doorAnim.GetCurrentAnimatorStateInfo(layerIndex);
+
+        if (!stateInfo.IsName("Closed") && stateInfo.normalizedTime >= 1.0f && !hasChecked) {
+            UpdateNavMesh();
+            hasChecked = true;
+        } else if (stateInfo.IsName("Closed") || stateInfo.normalizedTime < 1.0f) {
+            hasChecked = false;
+        }
     }
     public void UpdateNavMesh() {
         navMeshSurface.BuildNavMesh();

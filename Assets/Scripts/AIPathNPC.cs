@@ -237,7 +237,6 @@ public class AIPathNPC : MonoBehaviour {
     }
 
     private void setNextValidPath() {
-        Debug.Log($"name: {this.gameObject.name}\tsetNextValidPath():");
         int count = 0;
         do {
             navMeshAgent.SetDestination(waypoints[currentWaypointIdx].waypoint.transform.position);
@@ -252,6 +251,5 @@ public class AIPathNPC : MonoBehaviour {
         } while (!pathCheck());
         pathInvalid = false;
         navMeshAgent.isStopped = false;
-        Debug.Log($"name: {this.gameObject.name}\tPathInValid:{pathInvalid}\tPathCheck:{pathCheck()}");
     }
 }
