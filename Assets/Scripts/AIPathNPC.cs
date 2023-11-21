@@ -43,13 +43,17 @@ public class AIPathNPC : MonoBehaviour {
 
     private Transform playerTransform;
     private Animator animator;
+    private NPCController npcController;
+    private bool pathInvalid = false;
 
     void Start() {
+        npcController = GetComponent<NPCController>();
         playerTransform = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").transform;
         prevWaypointIdx = waypoints.Length - 1;
         audioSource = gameObject.AddComponent<AudioSource>();
         AISounds aiSounds = gameObject.AddComponent<AISounds>();
-        Rigidbody rb = gameObject.AddComponent<Rigidbody>();
+        Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+        if (rb == null) rb = gameObject.AddComponent<Rigidbody>();
         rb.useGravity = true;
         rb.isKinematic = false;
         rb.mass = 60.0f;
@@ -58,13 +62,15 @@ public class AIPathNPC : MonoBehaviour {
                          RigidbodyConstraints.FreezeRotationZ;
 
         if (preset == 0) {
-            CapsuleCollider capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
+            CapsuleCollider capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+            if (capsuleCollider == null) capsuleCollider = gameObject.AddComponent<CapsuleCollider>();
             capsuleCollider.center = new Vector3(0, 0.93f, 0);
             capsuleCollider.radius = 0.20f;
             capsuleCollider.height = 1.83f;
             capsuleCollider.direction = 1;
 
-            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+            navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
+            if (navMeshAgent == null) navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
             navMeshAgent.height = 1.83f;
             navMeshAgent.radius = 0.20f;
             navMeshAgent.speed = 2f;
@@ -80,16 +86,17 @@ public class AIPathNPC : MonoBehaviour {
             navMeshObstacle.height = 1.83f;
             navMeshObstacle.radius = 0.20f;
             navMeshObstacle.carving = true;
+
+            // navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
+            // navMeshObstacle.shape = NavMeshObstacleShape.Capsule;
+            // navMeshObstacle.center = new Vector3(navMeshObstacle.center.x, 0.92f, navMeshObstacle.center.z);
+            // navMeshObstacle.height = 1.83f;
+            // navMeshObstacle.radius = 0.20f;
+            // navMeshObstacle.carving = true;
         }
 
-        // navMeshObstacle = gameObject.AddComponent<NavMeshObstacle>();
-        // navMeshObstacle.shape = NavMeshObstacleShape.Capsule;
-        // navMeshObstacle.center = new Vector3(navMeshObstacle.center.x, 0.92f, navMeshObstacle.center.z);
-        // navMeshObstacle.height = 1.83f;
-        // navMeshObstacle.radius = 0.20f;
-        // navMeshObstacle.carving = true;
-
         animator = GetComponent<Animator>();
+        isWaiting = false;
     }
 
     void Update() {
@@ -108,6 +115,10 @@ public class AIPathNPC : MonoBehaviour {
             }
             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f) {
                 StartWaiting();
+            } else {
+                if (pathInvalid || !pathCheck()) {
+                    setNextValidPath();
+                }
             }
         } else {
             if (Time.time > waitEndTime) {
@@ -134,9 +145,7 @@ public class AIPathNPC : MonoBehaviour {
         if (waypoints.Length == 0) return;
         //navMeshObstacle.enabled = false;
         //navMeshAgent.enabled = true;
-        navMeshAgent.SetDestination(waypoints[currentWaypointIdx].waypoint.transform.position);
-        currentWaypointIdx = (currentWaypointIdx + 1) % waypoints.Length;
-        prevWaypointIdx = (prevWaypointIdx + 1) % waypoints.Length;
+        setNextValidPath();
         rotationStartTime = Time.time + Mathf.Max(0, navMeshAgent.remainingDistance / navMeshAgent.speed - rotationDuration);
     }
 
@@ -151,7 +160,7 @@ public class AIPathNPC : MonoBehaviour {
 
     private IEnumerator WaitAndPlayNPCAnimation(int idx) {
         if (waypoints[idx].animatioWaitingTime > 0) yield return new WaitForSeconds(waypoints[idx].animatioWaitingTime);
-        playNPCAnimation(waypoints[idx].animationMode);
+        if (preset < 7) playNPCAnimation(waypoints[idx].animationMode);
 
     }
     private IEnumerator WaitAndPlayNPCAudio(int idx) {
@@ -165,6 +174,10 @@ public class AIPathNPC : MonoBehaviour {
         if (waypoints[idx].waitingTime > 0) yield return new WaitForSeconds(waypoints[idx].waitingTime);
         isWaiting = false;
         StartCoroutine(WaitAndPlayNPCAudio(idx));
+        if (preset == 7) {
+            animator.SetBool("Type", !animator.GetBool("Type"));
+            npcController.enabled = !animator.GetBool("Type");
+        }
     }
 
     private void StopWaiting() {
@@ -201,6 +214,9 @@ public class AIPathNPC : MonoBehaviour {
             case 6:
                 animator.SetInteger("Death", preset - 4);
                 break;
+            case 7:
+                animator.SetInteger("Sit", 1);
+                break;
         }
         if (!isWaiting){
             StartCoroutine(presetWaiting(currentWaypointIdx));
@@ -213,5 +229,29 @@ public class AIPathNPC : MonoBehaviour {
         distance = Mathf.Clamp(distance, 0.01f, 10.0f);
 
         audioSource.volume = 1 - ((distance - 01f) / (10.0f - 01f));
+    }
+
+    private bool pathCheck() {
+        return !(navMeshAgent.pathStatus == NavMeshPathStatus.PathInvalid ||
+                 navMeshAgent.pathStatus == NavMeshPathStatus.PathPartial);
+    }
+
+    private void setNextValidPath() {
+        Debug.Log($"name: {this.gameObject.name}\tsetNextValidPath():");
+        int count = 0;
+        do {
+            navMeshAgent.SetDestination(waypoints[currentWaypointIdx].waypoint.transform.position);
+            currentWaypointIdx = (currentWaypointIdx + 1) % waypoints.Length;
+            prevWaypointIdx = (prevWaypointIdx + 1) % waypoints.Length;
+            count++;
+            if (count > waypoints.Length) {
+                pathInvalid = true;
+                navMeshAgent.isStopped = true;
+                return;
+            }
+        } while (!pathCheck());
+        pathInvalid = false;
+        navMeshAgent.isStopped = false;
+        Debug.Log($"name: {this.gameObject.name}\tPathInValid:{pathInvalid}\tPathCheck:{pathCheck()}");
     }
 }

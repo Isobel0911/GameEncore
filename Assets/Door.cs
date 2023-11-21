@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using Unity.AI.Navigation;
 
+[RequireComponent(typeof(NavMeshSurface))]
 public class Door : MonoBehaviour, IInteractable
 {
     [SerializeField] private Animator _doorAnim;
     private bool isClosed;
     private bool isOpened;
+    private NavMeshSurface navMeshSurface;
 
     private AudioSource audSrc;
 
@@ -28,8 +32,9 @@ public class Door : MonoBehaviour, IInteractable
         isClosed = true;
         isOpened = false;
 
-
         audSrc = GetComponent<AudioSource>();
+        GameObject navMeshUpdater = GameObject.Find("NavMeshUpdater");
+        navMeshSurface = navMeshUpdater.GetComponent<NavMeshSurface>();
     }
 
     public bool Interact(Interactor interactor)
@@ -76,5 +81,8 @@ public class Door : MonoBehaviour, IInteractable
         // }
 
         return true;
+    }
+    public void UpdateNavMesh() {
+        navMeshSurface.BuildNavMesh();
     }
 }
