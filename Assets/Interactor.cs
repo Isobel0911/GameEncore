@@ -10,6 +10,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private int _numFound;
     private Dictionary<int, int> dict;
     private string typeInt;
+    private GameObject doorUI, pickUI, otherUI;
+    private InventorySelf selfInteractor;
 
     private void Start() {
         dict = new Dictionary<int, int>();
@@ -20,6 +22,10 @@ public class Interactor : MonoBehaviour
         dict.Add(13, 14); dict.Add(14, 13);
         dict.Add(17, 18); dict.Add(18, 17);
         typeInt = "D2";
+        doorUI = GameObject.Find("Canvas/NotifyMsg/OpenDoor");
+        pickUI = GameObject.Find("Canvas/NotifyMsg/PickUp");
+        otherUI = GameObject.Find("Canvas/NotifyMsg/Other");
+        selfInteractor = this.gameObject.GetComponent<InventorySelf>();
     }
     
     private void Update() {
@@ -29,6 +35,14 @@ public class Interactor : MonoBehaviour
         // take only one interactable
         if (_numFound > 0) {
             if (checkDoor(_colliders, _numFound)) {
+
+                if (selfInteractor.hasKey1) {
+                    if (!doorUI.activeSelf) doorUI.SetActive(true);
+                } else {
+                    if (doorUI.activeSelf) doorUI.SetActive(false);
+                }
+                if (pickUI.activeSelf) pickUI.SetActive(false);
+                if (otherUI.activeSelf) otherUI.SetActive(false);
                 HashSet<int> doubleDoors = new HashSet<int>();
 
                 for (int i = 0; i < _numFound; i++) {
@@ -59,16 +73,32 @@ public class Interactor : MonoBehaviour
                 }
             } else {
                 var interactable = _colliders[0].GetComponent<IInteractable>();
+                if (doorUI.activeSelf) doorUI.SetActive(false);
+                if ((_colliders[0].gameObject.name == "SM_Prop_Plant_13")) {
+                    if (pickUI.activeSelf) pickUI.SetActive(false);
+                    if (otherUI.activeSelf) otherUI.SetActive(false);
+                } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03") {
+                    if (pickUI.activeSelf) pickUI.SetActive(false);
+                    if (!otherUI.activeSelf) otherUI.SetActive(true);
+                } else {
+                    if (!pickUI.activeSelf) pickUI.SetActive(true);
+                    if (otherUI.activeSelf) otherUI.SetActive(false);
+                }
                 if (interactable != null && Input.GetKeyDown(KeyCode.E)) {
                     interactable.Interact(this);
                 }
             }
+        } else {
+            if (doorUI.activeSelf) doorUI.SetActive(false);
+            if (pickUI.activeSelf) pickUI.SetActive(false);
+            if (otherUI.activeSelf) otherUI.SetActive(false);
         }
     }
 
     private bool checkDoor(Collider[] _colliders, int _numFound) {
         for (int i = 0; i < _numFound; i++) {
-            if (_colliders[i].gameObject.name.StartsWith("SM_Env_Door_")) {
+            if (_colliders[i].gameObject.name.StartsWith("SM_Env_Door_") ||
+                _colliders[i].gameObject.name == "SM_Env_VaultDoor_Lid_01") {
                 return true;
             }
         }
