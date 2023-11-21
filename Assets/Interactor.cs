@@ -5,7 +5,6 @@ public class Interactor : MonoBehaviour
 {
     [SerializeField] private Transform _interactionPoint;
     [SerializeField] private float _interactionPointRadius = 0.8f;
-    [SerializeField] private LayerMask _interactionMask;
 
     private readonly Collider[] _colliders = new Collider[4];
     [SerializeField] private int _numFound;
@@ -13,7 +12,7 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         _numFound = Physics.OverlapSphereNonAlloc(
-            _interactionPoint.position, _interactionPointRadius, _colliders, _interactionMask
+            _interactionPoint.position, _interactionPointRadius, _colliders, (1 << LayerMask.NameToLayer("Interactable"))
             );
         // take only one interactable
         if (_numFound > 0)
