@@ -115,15 +115,14 @@ public class AIPathNPC : MonoBehaviour {
             }
             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.1f) {
                 StartWaiting();
-            } else {
-                if (pathInvalid || !pathCheck()) {
-                    setNextValidPath();
-                }
             }
         } else {
             if (Time.time > waitEndTime) {
                 StopWaiting();
             }
+        }
+        if (pathInvalid || !pathCheck()) {
+            setNextValidPath();
         }
         UpdateAnimatorSpeed();
     }

@@ -24,7 +24,6 @@ public class DialogueManager : MonoBehaviour
         currentActors = actors;
         ActiveMEssage = 0;
 
-        Debug.Log("Started Conversation Loaded messages: " + messages.Length);
         DisplayMessage();
         backgroundBox.LeanScale(Vector3.one, 0.5f);
         
@@ -48,7 +47,6 @@ public class DialogueManager : MonoBehaviour
             // close dialogue
             isActive = false;
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
-            Debug.Log("Conversation ends");
         }
     }
     void Start()

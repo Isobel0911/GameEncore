@@ -12,10 +12,8 @@ public class KeyPlant : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor)
     {   
-        Debug.Log("found the key");
         var player = interactor.GetComponent<InventorySelf>();
         player.hasKey1 = true;
-        Debug.Log("NPC Interact");
 
 
         var playerAlert = interactor.GetComponent<AlertController>();
