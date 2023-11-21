@@ -77,7 +77,8 @@ public class Interactor : MonoBehaviour
                 if ((_colliders[0].gameObject.name == "SM_Prop_Plant_13")) {
                     if (pickUI.activeSelf) pickUI.SetActive(false);
                     if (otherUI.activeSelf) otherUI.SetActive(false);
-                } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03") {
+                } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03" ||
+                           _colliders[0].gameObject.name == "FrontDesk_Boss") {
                     if (pickUI.activeSelf) pickUI.SetActive(false);
                     if (!otherUI.activeSelf) otherUI.SetActive(true);
                 } else {
