@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEditor; // This is only for use within the Unity Editor
 using System.Linq;
 
 
 public class AISounds : MonoBehaviour {
     
-    private AudioClip LandingAudioClip;
-    private AudioClip[] FootstepAudioClips;
+    public AudioClip LandingAudioClip;
+    public AudioClip[] FootstepAudioClips;
     private AudioSource audioSource = null;
     private bool isInitialized = false;
 
@@ -17,19 +16,21 @@ public class AISounds : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         if (isInitialized) return;
         isInitialized = true;
-        string footstepPath = "Assets/StarterAssets/ThirdPersonController/Character/Sfx";
-        string landingClipName = "Player_Land.wav";
+        // string footstepPath = "Assets/StarterAssets/ThirdPersonController/Character/Sfx";
+        string landingClipName = "Player_Land";
         string footstepClipNames = "Player_Footstep_0";
 
         // Load the landing audio clip
-        LandingAudioClip = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/{landingClipName}");
+        // LandingAudioClip = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/{landingClipName}");
+        LandingAudioClip = Resources.Load<AudioClip>($"{landingClipName}");
 
         // Load the footstep audio clips
         FootstepAudioClips = new AudioClip[10];
         for (int i = 0; i < 9; i++) {
-            FootstepAudioClips[i] = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/{footstepClipNames}{i+1}.wav");
+            //  FootstepAudioClips[i] = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/{footstepClipNames}{i + 1}.wav");
+            FootstepAudioClips[i] = Resources.Load<AudioClip>($"{footstepClipNames}{i + 1}");
         }
-        FootstepAudioClips[9] = AssetDatabase.LoadAssetAtPath<AudioClip>($"{footstepPath}/Player_Footstep_10.wav");
+        FootstepAudioClips[9] = Resources.Load<AudioClip>("Player_Footstep_10");
     }
 
     private void OnFootstep(AnimationEvent animationEvent) {
