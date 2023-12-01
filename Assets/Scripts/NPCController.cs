@@ -20,11 +20,13 @@ public class NPCController : MonoBehaviour
     void Update()
     {
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
+        Transform tmp = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head");
+        if (tmp == null) { tmp = transform; }
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
-        Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
+        Vector3 myPosition = tmp.position;
 
         float distance = (myPosition - MainCharacterPosition).magnitude;
-        float angle = Vector3.Angle(transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").forward, MainCharacterPosition - myPosition);
+        float angle = Vector3.Angle(tmp.forward, MainCharacterPosition - myPosition);
         float coverDistanceOnAngle = angle * (-0.0556f) + 10f;
 
         

@@ -5,22 +5,25 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Conversation : MonoBehaviour
-
-{
+public class Conversation : MonoBehaviour {
     private string sceneName;
     private int lineCounter = 0;
     private CanvasGroup canvasGroup;
     // public StarterAssets.StarterAssetsInputs inputs;
     private Text conversationText;
     private List<string> conversation;
+    private BackgroundFading fadingScript;
+    private GameObject fadePanel;
+    private SceneSounds sceneSoundsScript;
+    public bool canProceedToNextConversation = true;
+    public int conversationStartMode = 0;
+    public int conversationEndMode = 0;
 
     // ========== Conversation Contents ==========
     // To add a sentence, simply append it to list, no need to change other places.
     
     // === Conversation Conversation Sentences ===
-    public List<string> introConversation = new()
-    {
+    public List<string> introConversation = new() {
         "You know who I am.",
         "[Ironic chuckling] How's your night in casino yesterday? Did you got enough to pay me back?",
         "Three more days? No, a deadline is a deadline. I mean it, D-E-A-D.",
@@ -33,85 +36,125 @@ public class Conversation : MonoBehaviour
     };
 
     // === Instruction Conversation Sentences ===
-    public List<string> instructionConversation = new()
-    {
+    public List<string> instructionConversation = new() {
         "Good. You are here. Let's measure your capability first.",
         "Go grab some valuables. Some doors may be locked, so you must find the keys yourself.",
         "Stay low and don't attract any attention, or say hello to jail and say goodbye to your family."
     };
 
-    void Awake()
-    {
+    void Awake() {
         sceneName = SceneManager.GetActiveScene().name;
         canvasGroup = transform.parent.GetComponent<CanvasGroup>();
         conversationText = GetComponent<Text>();
-        if (canvasGroup == null)
-        {
+        if (canvasGroup == null) {
             Debug.LogError("PauseMenuToggle: CanvasGroup component not found!");
         }
+        fadePanel = GameObject.Find("FadePanel");
+        fadingScript = fadePanel.GetComponent<BackgroundFading>();
+        if (fadingScript == null) fadingScript = fadePanel.AddComponent<BackgroundFading>();
+        GameObject sceneSoundsGB = GameObject.Find("In-Game Transition");
+        if (sceneSoundsGB == null) sceneSoundsGB = new GameObject("In-Game Transition");
+        sceneSoundsScript = sceneSoundsGB.GetComponent<SceneSounds>();
+        if (sceneSoundsScript == null) sceneSoundsScript = sceneSoundsGB.AddComponent<SceneSounds>();
     }
 
-    private void Start()
-    {
+    private void Start() {
         // Subscribe to the conversation events
         EventManager.OnConversation += ConversationStarts;
         EventManager.OnConversationEnd += ConversationEnds;
-        
     }
 
-    // private void OnDestroy()
-    // {
-    //     // Unsubscribe from events to avoid memory leaks
-    //     EventManager.OnConversation -= ConversationStarts;
-    //     EventManager.OnConversationEnd -= ConversationEnds;
-    // }
-
-    public void ConversationStarts(object sender, EventArgs e)
+    private void OnDestroy()
     {
+        // Unsubscribe from events to avoid memory leaks
+        EventManager.OnConversation -= ConversationStarts;
+        EventManager.OnConversationEnd -= ConversationEnds;
+    }
+
+    public void ConversationStarts(object sender, EventArgs e) {
+        if (!canProceedToNextConversation) return;
         ToggleConversationPanel();
-        if (sceneName == "Home")
-        {
+        if (sceneName == "Home") {
             conversation = introConversation;
-        }
-        else if (sceneName == "MainGame")
-        {
+        } else if (sceneName == "MainGame") {
             conversation = instructionConversation;
         }
-        conversationText.text = conversation[lineCounter];
-        // Debug.Log(conversation[lineCounter]);
+        if (lineCounter < conversation.Count) {
+            conversationText.text = conversation[lineCounter];
+            // Debug.Log(conversation[lineCounter]);
+        }
         lineCounter++;
-        if (lineCounter == conversation.Count)
-        {
-            EventManager.OnConversation -= ConversationStarts;
+        if (lineCounter == 2) {
+            // first behavior
+            fadingScript.callbackFunction = () => {
+                fadePanel.SetActive(false);
+                EventManager.instance.shouldWaitForFade = false;
+                sceneSoundsScript.PlayBGMSound(conversationStartMode);
+            };
+            fadingScript.FadeTo(0f, 1f);
+            EventManager.instance.shouldWaitForFade = true;
+        } else if (lineCounter == conversation.Count) {
+            // last
             EventManager.instance.conversationEnds = true;
-            lineCounter = 0;
+        }
+        if (lineCounter <= conversation.Count) {
+            // not last conversation
+            canProceedToNextConversation = false; // stop conversation
+            StartCoroutine(WaitAndAllowNextConversation(1f)); // for 1 seconds
         }
     }
 
-    public void ConversationEnds(object sender, EventArgs e)
-    {
-        ToggleConversationPanel();
-        EventManager.OnConversationEnd -= ConversationEnds;
-        
+    IEnumerator WaitAndAllowNextConversation(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        canProceedToNextConversation = true; // enable continue talking
     }
 
-    private void ToggleConversationPanel()
-    {
+    public void ConversationEnds(object sender, EventArgs e) {
+        ToggleConversationPanel();
+        EventManager.OnConversationEnd -= ConversationEnds;
+    }
+
+    private void ToggleConversationPanel() {
         
         if (EventManager.instance.conversationEnds) {
             // inputs.cursorLocked = true;
             // inputs.cursorInputForLook = true;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
-            canvasGroup.alpha = 0f;
-        }
-        else
-        {
+            StartCoroutine(TransitionToNextScene());
+        } else {
             // inputs.cursorLocked = false;
             // inputs.cursorInputForLook = false;
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;
+        }
+    }
+
+    public IEnumerator TransitionToNextScene() {
+        // Optionally, wait for a short duration if needed
+        yield return StartCoroutine(FadeOutCanvasGroup(canvasGroup, 0.5f));
+    }
+
+    private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float duration) {
+        float startAlpha = canvasGroup.alpha;
+        float time = 0;
+
+        while (time < duration) {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 0, time / duration);
+            yield return null;
+        }
+
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = 0;
+        switch(conversationEndMode) {
+            case 1:
+                GameObject startButton = GameObject.Find("Canvas/SafeAreaPanel/StartButton");
+                startButton.SetActive(true);
+                startButton.GetComponent<SceneTransition>().init(sceneSoundsScript, fadePanel, fadingScript);
+                break;
+            default:
+                break;
         }
     }
 }

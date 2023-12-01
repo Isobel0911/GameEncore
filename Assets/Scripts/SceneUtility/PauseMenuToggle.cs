@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))] 
-public class PauseMenuToggle : MonoBehaviour
-{
+public class PauseMenuToggle : MonoBehaviour {
     private CanvasGroup canvasGroup;
     public StarterAssets.StarterAssetsInputs inputs;
-    void Awake()
-    {
+    void Awake() {
         canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-        {
+        if (canvasGroup == null) {
             Debug.LogError("PauseMenuToggle: CanvasGroup component not found!");
         }
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (Input.GetKeyUp (KeyCode.Escape)) {
             if (canvasGroup.interactable) {         //disable in-game menu, enable game
                 inputs.cursorLocked = true;
@@ -27,9 +23,7 @@ public class PauseMenuToggle : MonoBehaviour
                 canvasGroup.blocksRaycasts = false;
                 canvasGroup.alpha = 0f;
                 Time.timeScale = 1f;
-            }
-            else                                    //enable in-game menu, disable game
-            {
+            } else {                                   //enable in-game menu, disable game
                 inputs.cursorLocked = false;
                 inputs.cursorInputForLook = false;
                 canvasGroup.interactable = true;

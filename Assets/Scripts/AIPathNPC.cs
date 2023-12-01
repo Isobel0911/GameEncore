@@ -28,6 +28,7 @@ public class Waypoint {
 
 public class AIPathNPC : MonoBehaviour {
     public int preset;
+    public bool hasPlayer = true;
     public Waypoint[] waypoints;
     private AudioSource audioSource;
     private int currentWaypointIdx = 0;
@@ -48,7 +49,7 @@ public class AIPathNPC : MonoBehaviour {
 
     void Start() {
         npcController = GetComponent<NPCController>();
-        playerTransform = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").transform;
+        if (hasPlayer) playerTransform = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").transform;
         prevWaypointIdx = waypoints.Length - 1;
         audioSource = gameObject.AddComponent<AudioSource>();
         AISounds aiSounds = gameObject.AddComponent<AISounds>();
@@ -100,7 +101,7 @@ public class AIPathNPC : MonoBehaviour {
     }
 
     void Update() {
-        updateSoundVolume();
+        if (hasPlayer) updateSoundVolume();
         if (preset > 0) {
             presetting();
             return;
@@ -242,7 +243,7 @@ public class AIPathNPC : MonoBehaviour {
             currentWaypointIdx = (currentWaypointIdx + 1) % waypoints.Length;
             prevWaypointIdx = (prevWaypointIdx + 1) % waypoints.Length;
             count++;
-            if (count > waypoints.Length + 1) {
+            if (count > waypoints.Length + 3) {
                 pathInvalid = true;
                 navMeshAgent.SetDestination(transform.position);
                 return;
