@@ -10,9 +10,9 @@ public class KeyPlant : MonoBehaviour, IInteractable
     [SerializeField] private string _prompt;
     public string InteractionPrompt => _prompt;
 
-    public bool Interact(Interactor interactor)
-    {   
+    public bool Interact(Interactor interactor) {   
         var player = interactor.GetComponent<InventorySelf>();
+        if (player != null && player.hasKey1) return true;
         player.hasKey1 = true;
 
 

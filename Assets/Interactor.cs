@@ -74,6 +74,8 @@ public class Interactor : MonoBehaviour {
                 var interactable = _colliders[0].GetComponent<IInteractable>();
                 if (doorUI.activeSelf) doorUI.SetActive(false);
                 if ((_colliders[0].gameObject.name == "SM_Prop_Plant_13")) {
+                    var player = this.gameObject.GetComponent<InventorySelf>();
+                    if (player != null && player.hasKey1) return;
                     if (pickUI.activeSelf) pickUI.SetActive(false);
                     if (otherUI.activeSelf) otherUI.SetActive(false);
                 } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03" ||
@@ -105,8 +107,7 @@ public class Interactor : MonoBehaviour {
         return false;
     }
 
-    private void OnDrawGizmos()
-    {
+    private void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(_interactionPoint.position, _interactionPointRadius);
     }
