@@ -100,7 +100,8 @@ public class Conversation : MonoBehaviour {
         if (lineCounter <= conversation.Count) {
             // not last conversation
             canProceedToNextConversation = false; // stop conversation
-            StartCoroutine(WaitAndAllowNextConversation(1f)); // for 1 seconds
+            // StartCoroutine(WaitAndAllowNextConversation(1f)); // for 1 seconds
+            StartCoroutine(WaitAndAllowNextConversation(0f));
         }
     }
 

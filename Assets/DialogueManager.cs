@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour {
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
     private CanvasGroup canvasGroup = null;
+    [HideInInspector] public bool talkedToJessica = false;
 
     Message[] currentMessages;
     Actor[] currentActors;
@@ -23,7 +24,7 @@ public class DialogueManager : MonoBehaviour {
         yield return StartCoroutine(FadeOutCanvasGroup(canvasGroup, value, 0.5f, target));
     }
 
-    private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroupm, float value, float duration, bool target) {
+    private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float value, float duration, bool target) {
         float startAlpha = canvasGroup.alpha;
         float time = 0;
 
@@ -71,8 +72,19 @@ public class DialogueManager : MonoBehaviour {
         ActiveMEssage++;
         if (ActiveMEssage < currentMessages.Length) {
             DisplayMessage();
-        } else {
-            // close dialogue
+        } else {        // close dialogue
+
+            // enable interacting with plants after interacted with Jessica
+            if (currentActors.Length > 1 && currentActors[1].name == "Jessica")
+            {
+                // Debug.Log("this is jess");
+                talkedToJessica = true;
+            }
+            // else
+            // {
+            //     Debug.Log("this is not jess");
+            // }
+            
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
             StartCoroutine(TransitionToNextScene(0f, false));
         }

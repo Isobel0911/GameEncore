@@ -9,7 +9,7 @@ public class Interactor : MonoBehaviour {
     [SerializeField] private int _numFound;
     private Dictionary<int, int> dict;
     private string typeInt;
-    private GameObject doorUI, pickUI, otherUI;
+    private GameObject doorUI, otherUI;//, pickUI;
     private InventorySelf selfInteractor;
 
     private void Start() {
@@ -21,9 +21,9 @@ public class Interactor : MonoBehaviour {
         dict.Add(13, 14); dict.Add(14, 13);
         dict.Add(17, 18); dict.Add(18, 17);
         typeInt = "D2";
-        doorUI = GameObject.Find("Canvas/NotifyMsg/OpenDoor");
-        pickUI = GameObject.Find("Canvas/NotifyMsg/PickUp");
-        otherUI = GameObject.Find("Canvas/NotifyMsg/Other");
+        doorUI = GameObject.Find("Canvas/SafeAreaPanel/NotifyMsg/OpenDoor");
+        // pickUI = GameObject.Find("Canvas/NotifyMsg/PickUp");
+        otherUI = GameObject.Find("Canvas/SafeAreaPanel/NotifyMsg/Other");
         selfInteractor = this.gameObject.GetComponent<InventorySelf>();
     }
     
@@ -40,7 +40,7 @@ public class Interactor : MonoBehaviour {
                 } else {
                     if (doorUI.activeSelf) doorUI.SetActive(false);
                 }
-                if (pickUI.activeSelf) pickUI.SetActive(false);
+                // if (pickUI.activeSelf) pickUI.SetActive(false);
                 if (otherUI.activeSelf) otherUI.SetActive(false);
                 HashSet<int> doubleDoors = new HashSet<int>();
 
@@ -73,26 +73,28 @@ public class Interactor : MonoBehaviour {
             } else {
                 var interactable = _colliders[0].GetComponent<IInteractable>();
                 if (doorUI.activeSelf) doorUI.SetActive(false);
-                if ((_colliders[0].gameObject.name == "SM_Prop_Plant_13")) {
-                    var player = this.gameObject.GetComponent<InventorySelf>();
-                    if (player != null && player.hasKey1) return;
-                    if (pickUI.activeSelf) pickUI.SetActive(false);
-                    if (otherUI.activeSelf) otherUI.SetActive(false);
-                } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03" ||
-                           _colliders[0].gameObject.name == "FrontDesk_Boss") {
-                    if (pickUI.activeSelf) pickUI.SetActive(false);
-                    if (!otherUI.activeSelf) otherUI.SetActive(true);
-                } else {
-                    if (!pickUI.activeSelf) pickUI.SetActive(true);
-                    if (otherUI.activeSelf) otherUI.SetActive(false);
-                }
+                // if (_colliders[0].gameObject.name == "SM_Prop_Plant_13") {
+                // // if (_colliders[0].gameObject.tag == "keyplant") {
+                //     var player = gameObject.GetComponent<InventorySelf>();
+                //     if (player == null || player.hasKey1) return;
+                //     if (pickUI.activeSelf) pickUI.SetActive(false);
+                //     if (otherUI.activeSelf) otherUI.SetActive(false);
+                // } else if (_colliders[0].gameObject.name == "SM_Prop_Computer_03" ||
+                //            _colliders[0].gameObject.name == "FrontDesk_Boss") {
+                //     if (pickUI.activeSelf) pickUI.SetActive(false);
+                //     if (!otherUI.activeSelf) otherUI.SetActive(true);
+                // } else {
+                //     if (!pickUI.activeSelf) pickUI.SetActive(true);
+                //     if (otherUI.activeSelf) otherUI.SetActive(false);
+                // }
+                if (!otherUI.activeSelf) otherUI.SetActive(true);
                 if (interactable != null && Input.GetKeyDown(KeyCode.E)) {
                     interactable.Interact(this);
                 }
             }
         } else {
             if (doorUI.activeSelf) doorUI.SetActive(false);
-            if (pickUI.activeSelf) pickUI.SetActive(false);
+            // if (pickUI.activeSelf) pickUI.SetActive(false);
             if (otherUI.activeSelf) otherUI.SetActive(false);
         }
     }
