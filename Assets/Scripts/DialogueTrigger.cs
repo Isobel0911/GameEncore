@@ -17,17 +17,6 @@ public class DialogueTrigger : MonoBehaviour, IInteractable
         // FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         return true;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 [System.Serializable]
 public class Message {

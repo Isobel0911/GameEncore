@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     Message[] currentMessages;
     Actor[] currentActors;
     int ActiveMEssage = 0;
+    private PlayerInput playerInput;
     public static bool isActive = false;
     public void OpenDialogue(Message[] messages, Actor[] actors) {
         isActive = true;
@@ -25,6 +27,8 @@ public class DialogueManager : MonoBehaviour
         currentMessages = messages;
         currentActors = actors;
         ActiveMEssage = 0;
+
+        playerInput.DeactivateInput();
 
         DisplayMessage();
         backgroundBox.LeanScale(Vector3.one, 0.5f);
@@ -48,6 +52,7 @@ public class DialogueManager : MonoBehaviour
         } else {
             // close dialogue
             isActive = false;
+            playerInput.ActivateInput();
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
 
             if (currentActors.Length > 1 && currentActors[1].name == "Jessica")
@@ -60,6 +65,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         backgroundBox.transform.localScale = Vector3.zero;
+        playerInput = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").GetComponent<PlayerInput>();
     }
     void Update() 
     {
