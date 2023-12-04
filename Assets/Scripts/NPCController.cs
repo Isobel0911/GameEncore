@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System;
 
 public class NPCController : MonoBehaviour
@@ -19,6 +20,14 @@ public class NPCController : MonoBehaviour
 
     void Update()
     {
+
+        if (ac.alert >= 80) {
+            print("end game/ game over scene");
+            SceneManager.LoadScene("GameOverAlert");
+        }
+
+        
+
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
@@ -36,12 +45,14 @@ public class NPCController : MonoBehaviour
                 }
             }
             else {
-                // if (Input.GetKey(KeyCode.E)) {
-                //     float calculatedAlertValue = (100 * (1f - distance / coverDistanceOnAngle));
-                //     if (ac.alert < calculatedAlertValue) {
-                //         ac.alert = calculatedAlertValue;
-                //     } else if (ac.alert > calculatedAlertValue) {
-                //         ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
+                // check if walking fbi_01
+                // if (gameObject.name == "Walking_FBI_01") {
+                //     print("now we are in the range of walking fbi");
+                //     Scene currentScene = SceneManager.GetActiveScene();
+                //     Debug.Log("Current Scene: " + currentScene.name);
+
+                //     if (currentScene.name == "SlidingTilePuzzle") {
+                //         print("you are solving puzzle!!");
                 //     }
                 // }
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
