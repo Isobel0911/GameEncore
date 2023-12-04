@@ -9,12 +9,13 @@ using UnityEngine.UI;
 public class Conversation : MonoBehaviour
 
 {
-    public int tester = 0;
     private string sceneName;
     private int lineCounter = 0;
     private CanvasGroup canvasGroup;
     // public StarterAssets.StarterAssetsInputs inputs;
     private Text conversationText;
+    public Camera jessCam;
+    public Camera mainCam;
     [HideInInspector]public List<string> conversation;
 
     // [HideInInspector]public bool canProceedToNextConversation = true;
@@ -74,6 +75,7 @@ public class Conversation : MonoBehaviour
         {
             // Default Conversation
             conversation = moneyInstruction;
+
             // Other conversation could be changed in other places
             // eg. in AlertController.cs when player.input > 1500
         }
@@ -90,10 +92,19 @@ public class Conversation : MonoBehaviour
     {
         // if (!canProceedToNextConversation) return;
         EventManager.instance.convInProgress = true;
-        Debug.Log(tester);
-        tester++;
         ToggleConversationPanel();
         conversationText.text = conversation[lineCounter];
+
+        // camera focus on jessica to help player identify her
+        if (conversation == jessicaInstruction && lineCounter == 1)
+        {
+            if (jessCam != null && mainCam != null)
+            {
+                mainCam.enabled = false;
+                jessCam.enabled = true;
+                Debug.Log("Camera");
+            }
+        }
         lineCounter++;
         if (lineCounter == conversation.Count)
         {
@@ -110,7 +121,11 @@ public class Conversation : MonoBehaviour
     {
         ToggleConversationPanel();
         EventManager.OnConversationEnd -= ConversationEnds;
-        
+        if (jessCam != null && mainCam != null)
+        {
+            jessCam.enabled = false;
+            mainCam.enabled = true;
+        }
     }
 
     private void ToggleConversationPanel()
