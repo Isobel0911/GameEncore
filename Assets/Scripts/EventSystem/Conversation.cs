@@ -78,17 +78,25 @@ public class Conversation : MonoBehaviour {
 
         bool isStart;
         int convTextIdx;
+        Action<object[]> callbackFunction;
+        object[] callbackParams;
 
         if (e == null || e == EventArgs.Empty) {
             isStart = false;
             convTextIdx = 0;
+            callbackFunction = null;
+            callbackParams = null;
         } else {
             isStart = e.isStart;
             convTextIdx = e.convTextIdx;
+            callbackFunction = e.callbackFunction;
+            callbackParams = e.callbackParams;
         }
 
         if (isStart){
+            EventManager.convInProgress = true;
             lineCounter = 0;
+            callbackFunction(callbackParams);
             if (sceneName == "Home") {
                 conversation = introConversation;
                 fadingPanelStart = true;
@@ -189,6 +197,7 @@ public class Conversation : MonoBehaviour {
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0;
+        EventManager.convInProgress = false;
         switch(conversationEndMode) {
             case 0:
                 GameObject startButton = GameObject.Find("Canvas/SafeAreaPanel/StartButton");
