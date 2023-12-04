@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,19 +9,21 @@ using UnityEngine.UI;
 public class Conversation : MonoBehaviour
 
 {
+    public int tester = 0;
     private string sceneName;
     private int lineCounter = 0;
     private CanvasGroup canvasGroup;
     // public StarterAssets.StarterAssetsInputs inputs;
     private Text conversationText;
-    private List<string> conversation;
+    [HideInInspector]public List<string> conversation;
+
+    // [HideInInspector]public bool canProceedToNextConversation = true;
 
     // ========== Conversation Contents ==========
     // To add a sentence, simply append it to list, no need to change other places.
     
     // === Conversation Conversation Sentences ===
-    public List<string> introConversation = new()
-    {
+    public List<string> introConversation = new() {
         "You know who I am.",
         "[Ironic chuckling] How's your night in casino yesterday? Did you got enough to pay me back?",
         "Three more days? No, a deadline is a deadline. I mean it, D-E-A-D.",
@@ -33,11 +36,18 @@ public class Conversation : MonoBehaviour
     };
 
     // === Instruction Conversation Sentences ===
-    public List<string> instructionConversation = new()
-    {
+    // Task 1 instruction - test ability
+    public List<string> moneyInstruction = new() {
         "Good. You are here. Let's measure your capability first.",
-        "Go grab some valuables. Some doors may be locked, so you must find the keys yourself.",
-        "Stay low and don't attract any attention, or say hello to jail and say goodbye to your family."
+        "Go find some valueables worth 1000 dollars. Cash, jewelry, whatever.",
+        "Bank employees and guards are vigilant, so don't risk in front of them.",
+        "If you're caught, cry for your family in jail. You only have this one chance."
+    };
+
+    // Task 2 instruction - talk to jessica
+    public List<string> jessicaInstruction = new() {
+        "Woah, I gotta say you are pretty talented at crime.",
+        "Now, see the lady at the front desk? She's our friend. Ask her about Lost & Found and try to find HER key with BLUE eyes."
     };
 
     void Awake()
@@ -56,7 +66,17 @@ public class Conversation : MonoBehaviour
         // Subscribe to the conversation events
         EventManager.OnConversation += ConversationStarts;
         EventManager.OnConversationEnd += ConversationEnds;
-        
+        if (sceneName == "Home")
+        {
+            conversation = introConversation;
+        }
+        else if (sceneName == "MainGame")
+        {
+            // Default Conversation
+            conversation = moneyInstruction;
+            // Other conversation could be changed in other places
+            // eg. in AlertController.cs when player.input > 1500
+        }
     }
 
     // private void OnDestroy()
@@ -68,24 +88,22 @@ public class Conversation : MonoBehaviour
 
     public void ConversationStarts(object sender, EventArgs e)
     {
+        // if (!canProceedToNextConversation) return;
+        EventManager.instance.convInProgress = true;
+        Debug.Log(tester);
+        tester++;
         ToggleConversationPanel();
-        if (sceneName == "Home")
-        {
-            conversation = introConversation;
-        }
-        else if (sceneName == "MainGame")
-        {
-            conversation = instructionConversation;
-        }
         conversationText.text = conversation[lineCounter];
-        // Debug.Log(conversation[lineCounter]);
         lineCounter++;
         if (lineCounter == conversation.Count)
         {
-            EventManager.OnConversation -= ConversationStarts;
-            EventManager.instance.conversationEnds = true;
+            EventManager.instance.convInProgress = false;
             lineCounter = 0;
+            EventManager.OnConversation -= ConversationStarts;
         }
+        // EventManager.OnConversation += NextMessage;
+        // EventManager.OnConversation -= ConversationStarts;
+        
     }
 
     public void ConversationEnds(object sender, EventArgs e)
@@ -97,21 +115,21 @@ public class Conversation : MonoBehaviour
 
     private void ToggleConversationPanel()
     {
-        
-        if (EventManager.instance.conversationEnds) {
-            // inputs.cursorLocked = true;
-            // inputs.cursorInputForLook = true;
-            canvasGroup.interactable = false;
-            canvasGroup.blocksRaycasts = false;
-            canvasGroup.alpha = 0f;
-        }
-        else
-        {
+        if (EventManager.instance.convInProgress) {
             // inputs.cursorLocked = false;
             // inputs.cursorInputForLook = false;
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
             canvasGroup.alpha = 1f;
         }
+        else
+        {
+            // inputs.cursorLocked = true;
+            // inputs.cursorInputForLook = true;
+            canvasGroup.interactable = false;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.alpha = 0f;
+        }
+
     }
 }

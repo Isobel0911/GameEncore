@@ -12,6 +12,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
 
+    [HideInInspector] public bool talkedToJessica = false;
+
     Message[] currentMessages;
     Actor[] currentActors;
     int ActiveMEssage = 0;
@@ -47,6 +49,12 @@ public class DialogueManager : MonoBehaviour
             // close dialogue
             isActive = false;
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();
+
+            if (currentActors.Length > 1 && currentActors[1].name == "Jessica")
+            {
+                // Debug.Log("talkedToJessica");
+                talkedToJessica = true;
+            }
         }
     }
     void Start()

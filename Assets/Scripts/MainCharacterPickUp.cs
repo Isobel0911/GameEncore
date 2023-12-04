@@ -27,8 +27,8 @@ public class MainCharacterPickUp : MonoBehaviour
         //float eyeHeight = 
         //Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         float eyeHeight = transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position.y;
-        print(eyeHeight);
-        print(height);
+        // print(eyeHeight);
+        // print(height);
         // consider different situations
         if (eyeHeight - height < 0) {
             animator.SetTrigger("GrabHigh");

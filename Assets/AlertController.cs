@@ -10,16 +10,29 @@ public class AlertController : MonoBehaviour
     public TMP_Text moneyText;
     public int money = 0;
     // Start is called before the first frame update
+    private Conversation conversationScript;
+    [HideInInspector]public bool triggeredJessica;
     void Start()
     {
-
+        conversationScript = GameObject.FindObjectOfType<Conversation>();
+        triggeredJessica = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         moneyText.text = money.ToString();
-
         pb.BarValue = (int) alert;
+
+        // trigger event
+        if (money > 2000 && !triggeredJessica)
+        {
+            conversationScript.conversation = conversationScript.jessicaInstruction;
+            EventManager.OnConversation += conversationScript.ConversationStarts;
+            EventManager.OnConversationEnd += conversationScript.ConversationEnds;
+            Debug.Log("money > 2000");
+            triggeredJessica = true;
+        }
+        
     }
 }

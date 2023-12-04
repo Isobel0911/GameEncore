@@ -11,7 +11,10 @@ public class EventManager : MonoBehaviour
 
     public static EventManager instance;
 
-    public bool conversationEnds = false;
+    // [HideInInspector]public bool conversationEnds = false;
+    [HideInInspector]public bool convInProgress = false;
+    private AlertController alert;
+    [HideInInspector]public bool invokedJessica = false;
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class EventManager : MonoBehaviour
     private void Start()
     {
         OnConversation?.Invoke(this, EventArgs.Empty);
+        alert = GameObject.FindObjectOfType<AlertController>();
     }
 
     private void Update()
@@ -31,13 +35,22 @@ public class EventManager : MonoBehaviour
         // Press Tab for next conversation sentence
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (conversationEnds)
+            if (convInProgress)
             {
-                OnConversationEnd?.Invoke(this, EventArgs.Empty);
-            }
-            else{
+                // Debug.Log("conv in prog");
+                // Debug.Log(OnConversation.GetInvocationList());
                 OnConversation?.Invoke(this, EventArgs.Empty);
             }
+            else{
+                OnConversationEnd?.Invoke(this, EventArgs.Empty);
+            }
+        }
+
+        if (alert != null && !invokedJessica && alert.triggeredJessica)
+        {
+            invokedJessica = true;
+            // Debug.Log(convInProgress);
+            OnConversation?.Invoke(this, EventArgs.Empty);
         }
     }
 }
