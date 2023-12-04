@@ -51,6 +51,7 @@ public class DialogueManager : MonoBehaviour
             DisplayMessage();
         } else {
             // close dialogue
+            Debug.Log("close");
             isActive = false;
             playerInput.ActivateInput();
             backgroundBox.LeanScale(Vector3.zero, 0.5f).setEaseInOutExpo();

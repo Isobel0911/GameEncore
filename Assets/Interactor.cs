@@ -98,6 +98,11 @@ public class Interactor : MonoBehaviour {
                     }
                     
                 }
+                if (_colliders[0].gameObject.CompareTag("computer"))
+                {
+                    if(PuzzleInteract.hasStarted && !PuzzleInteract.hasSolved)
+                    otherUI.SetActive(false);
+                }
                 if (interactable != null && Input.GetKeyDown(KeyCode.E)) {
                     interactable.Interact(this);
                 }
