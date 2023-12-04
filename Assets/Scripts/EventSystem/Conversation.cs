@@ -96,7 +96,7 @@ public class Conversation : MonoBehaviour {
         if (isStart){
             EventManager.convInProgress = true;
             lineCounter = 0;
-            callbackFunction(callbackParams);
+            if (callbackFunction != null) callbackFunction(callbackParams);
             if (sceneName == "Home") {
                 conversation = introConversation;
                 fadingPanelStart = true;
