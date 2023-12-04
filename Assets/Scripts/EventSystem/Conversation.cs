@@ -17,7 +17,9 @@ public class Conversation : MonoBehaviour {
     private SceneSounds sceneSoundsScript;
     public bool canProceedToNextConversation = true;
     public int conversationStartMode = 0;
-    public int conversationEndMode = 0;
+    private int conversationEndMode = 0;
+    private bool fadingPanelStart = true;
+    private bool fadingPanelEnd = false;
 
     // ========== Conversation Contents ==========
     // To add a sentence, simply append it to list, no need to change other places.
@@ -64,20 +66,48 @@ public class Conversation : MonoBehaviour {
         EventManager.OnConversationEnd += ConversationEnds;
     }
 
-    private void OnDestroy()
-    {
+    private void OnDestroy() {
         // Unsubscribe from events to avoid memory leaks
         EventManager.OnConversation -= ConversationStarts;
         EventManager.OnConversationEnd -= ConversationEnds;
     }
 
-    public void ConversationStarts(object sender, EventArgs e) {
+    public void ConversationStarts(object sender, ConversationEventArgs e) {
         if (!canProceedToNextConversation) return;
         ToggleConversationPanel();
-        if (sceneName == "Home") {
-            conversation = introConversation;
-        } else if (sceneName == "MainGame") {
-            conversation = instructionConversation;
+
+        bool isStart;
+        int convTextIdx;
+
+        if (e == null || e == EventArgs.Empty) {
+            isStart = false;
+            convTextIdx = 0;
+        } else {
+            isStart = e.isStart;
+            convTextIdx = e.convTextIdx;
+        }
+
+        if (isStart){
+            lineCounter = 0;
+            if (sceneName == "Home") {
+                conversation = introConversation;
+                fadingPanelStart = true;
+                fadingPanelEnd = false;
+                conversationEndMode = 0;
+            } else if (sceneName == "MainGame") {
+                switch(convTextIdx) {
+                    case 0:
+                        conversation = instructionConversation;
+                        fadingPanelStart = true;
+                        fadingPanelEnd = false;
+                        conversationEndMode = 1;
+                        break;
+                    case 1:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         if (lineCounter < conversation.Count) {
             conversationText.text = conversation[lineCounter];
@@ -85,14 +115,16 @@ public class Conversation : MonoBehaviour {
         }
         lineCounter++;
         if (lineCounter == 2) {
-            // first behavior
-            fadingScript.callbackFunction = () => {
-                fadePanel.SetActive(false);
-                EventManager.instance.shouldWaitForFade = false;
-                sceneSoundsScript.PlayBGMSound(conversationStartMode);
-            };
-            fadingScript.FadeTo(0f, 1f);
-            EventManager.instance.shouldWaitForFade = true;
+            // first behavior of fading panel
+            if (fadingPanelStart) {
+                fadingScript.callbackFunction = () => {
+                    fadePanel.SetActive(false);
+                    EventManager.instance.shouldWaitForFade = false;
+                    sceneSoundsScript.PlayBGMSound(conversationStartMode);
+                };
+                fadingScript.FadeTo(0f, 1f);
+                EventManager.instance.shouldWaitForFade = true;
+            }
         } else if (lineCounter == conversation.Count) {
             // last
             EventManager.instance.conversationEnds = true;
@@ -126,13 +158,22 @@ public class Conversation : MonoBehaviour {
             // inputs.cursorInputForLook = false;
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
-            canvasGroup.alpha = 1f;
         }
     }
 
     public IEnumerator TransitionToNextScene() {
         // Optionally, wait for a short duration if needed
-        yield return StartCoroutine(FadeOutCanvasGroup(canvasGroup, 0.5f));
+        EventManager.instance.shouldWaitForFade = true;
+        if (fadingPanelEnd) {
+            fadingScript.callbackFunction = () => {
+                fadePanel.SetActive(false);
+                StartCoroutine(FadeOutCanvasGroup(canvasGroup, 0.5f));
+            };
+            fadingScript.FadeTo(0f, 1f);
+            yield return null;
+        } else {
+            yield return StartCoroutine(FadeOutCanvasGroup(canvasGroup, 0.5f));
+        }
     }
 
     private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float duration) {
@@ -149,12 +190,14 @@ public class Conversation : MonoBehaviour {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 0;
         switch(conversationEndMode) {
-            case 1:
+            case 0:
                 GameObject startButton = GameObject.Find("Canvas/SafeAreaPanel/StartButton");
                 startButton.SetActive(true);
                 startButton.GetComponent<SceneTransition>().init(sceneSoundsScript, fadePanel, fadingScript);
+                EventManager.instance.shouldWaitForFade = true; // to disable Tab since we don't need to use it anymore
                 break;
             default:
+                EventManager.instance.shouldWaitForFade = true;
                 break;
         }
     }

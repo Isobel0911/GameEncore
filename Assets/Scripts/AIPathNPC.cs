@@ -166,7 +166,7 @@ public class AIPathNPC : MonoBehaviour {
     private IEnumerator WaitAndPlayNPCAudio(int idx) {
         if (waypoints[idx].audioClips.Length == 0) yield break;
         if (waypoints[idx].audioWaitingTime > 0) yield return new WaitForSeconds(waypoints[idx].audioWaitingTime);
-        audioSource.PlayOneShot(waypoints[idx].audioClips[Random.Range(0, waypoints[idx].audioClips.Length)]);
+        if (audioSource.enabled) audioSource.PlayOneShot(waypoints[idx].audioClips[Random.Range(0, waypoints[idx].audioClips.Length)]);
     }
     private IEnumerator presetWaiting(int idx) {
         if (isWaiting || waypoints.Length == 0) yield break;
