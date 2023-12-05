@@ -27,6 +27,7 @@ public class VaultDoorEnabled : MonoBehaviour, IInteractable {
 
     public bool Interact(Interactor interactor) {
         if (vaultEnabled) {
+            Debug.Log("vaultEnabled");
             fadePanel?.SetActive(true);
             fadingScript.callbackFunction = () => {
                 SceneManager.LoadScene("GameFinal");

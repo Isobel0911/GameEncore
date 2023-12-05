@@ -6,6 +6,7 @@ public class FinalStageController : MonoBehaviour {
     AudioSource ac;
     GameObject[] texts;
     private bool hasStarted = false;
+    public bool isCredit = false;
 
     void Awake() {
         ac = GameObject.Find("Main Camera")?.GetComponent<AudioSource>();
@@ -49,6 +50,7 @@ public class FinalStageController : MonoBehaviour {
             yield return null;
         }
 
-        SceneManager.LoadScene("Menu");
+        if (isCredit) SceneManager.LoadScene("MainGame");
+        else SceneManager.LoadScene("Menu");
     }
 }
