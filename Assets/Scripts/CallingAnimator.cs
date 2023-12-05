@@ -18,7 +18,7 @@ public class CallingAnimator : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         EventManager.OnConversationEnd += GoToGame;
-        start.gameObject.SetActive(false);
+        start?.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class CallingAnimator : MonoBehaviour
     }
 
     public void GoToGame(object sender, EventArgs e) {
-        start.gameObject.SetActive(true);
+        start?.gameObject.SetActive(true);
         EventManager.OnConversationEnd -= GoToGame;
     }
 }

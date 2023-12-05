@@ -107,6 +107,10 @@ public class Conversation : MonoBehaviour {
 
     public void ConversationStarts(object sender, ConversationEventArgs e) {
         if (!canProceedToNextConversation) return;
+        if (conversation == jessicaInstruction)
+            Debug.Log("jessicaInstruction");
+        else if (conversation == selfTalking)
+            Debug.Log("selfTalking");
 
         bool isStart;
         int convTextIdx;
@@ -177,7 +181,7 @@ public class Conversation : MonoBehaviour {
         }
         if (lineCounter < conversation.Count) {
             conversationText.text = conversation[lineCounter];
-            // Debug.Log(conversation[lineCounter]);
+            Debug.Log($"conversation[lineCounter]: {conversation[lineCounter]}");
         }
         if (conversation == jessicaInstruction && lineCounter == 1) {
             if (jessCam != null && mainCam != null) {
@@ -301,14 +305,30 @@ public class Conversation : MonoBehaviour {
                 }
                 break;
             case 2:
-                fadePanel.SetActive(true);
-                fadingScript.callbackFunction = () => {
-                    // SceneManager.LoadScene("GameFinal03");
-                };
-                fadingScript.FadeTo(1f, 1f);
+                StartCoroutine(finalSound(sceneSoundsScript, 2f));
                 break;
             default:
                 break;
         }
+    }
+
+    private IEnumerator finalSound(SceneSounds sceneSounds, float duration) {
+        float startVolume = sceneSounds.GetBGMSoundVolume();
+        for (float t = 0; t < duration; t += Time.deltaTime) {
+            float normalizedTime = t / duration;
+            sceneSounds.SetBGMSoundVolume(Mathf.Lerp(startVolume, 0, normalizedTime));
+            yield return null;
+        }
+        sceneSounds.SetBGMSoundVolume(0);
+        sceneSounds.PlayBGMOnce(4);
+        StartCoroutine(WaitEnd(4f));
+    }
+
+    private IEnumerator WaitEnd(float waitTime) {
+        yield return new WaitForSeconds(waitTime);
+        GameObject gb = GameObject.Find("Character");
+        SceneTransition st = gb?.GetComponent<SceneTransition>();
+        st?.init(sceneSoundsScript, fadePanel, fadingScript);
+        st?.sceneChanged("GameFinal03");
     }
 }

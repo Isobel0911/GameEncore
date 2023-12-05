@@ -21,7 +21,7 @@ public class SceneSounds : MonoBehaviour {
         if (audioListener == null) audioListener = sceneAudio.AddComponent<AudioListener>();
         buttonSounds = new AudioClip[7];
         interactSounds = new AudioClip[3];
-        BGMs = new AudioClip[5];
+        BGMs = new AudioClip[6];
         for (int i = 0; i < 7; i++)
             buttonSounds[i] = Resources.Load<AudioClip>($"scene_button_0{i+1}");
         for (int i = 0; i < 3; i++)
