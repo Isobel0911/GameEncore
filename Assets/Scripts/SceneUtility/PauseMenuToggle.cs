@@ -10,6 +10,7 @@ public class PauseMenuToggle : MonoBehaviour
     private CanvasGroup canvasGroup;
     public StarterAssets.StarterAssetsInputs inputs;
     private PlayerInput playerInput;
+    public GameObject originalOne, volumeOne;
     private GameQuitter quitter;
     void Awake()
     {
@@ -34,6 +35,8 @@ public class PauseMenuToggle : MonoBehaviour
                 canvasGroup.alpha = 0f;
                 // Time.timeScale = 1f;
                 playerInput.ActivateInput();
+                originalOne.SetActive(false);
+                volumeOne.SetActive(false);
             }
             else                                    //enable in-game menu, disable game
             {
@@ -44,6 +47,8 @@ public class PauseMenuToggle : MonoBehaviour
                 canvasGroup.alpha = 1f;
                 // Time.timeScale = 0f;
                 playerInput.DeactivateInput();
+                originalOne.SetActive(true);
+                volumeOne.SetActive(false);
             }
         }
         if (canvasGroup.interactable && Input.GetKeyUp (KeyCode.Q))

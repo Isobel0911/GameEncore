@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SceneSounds : MonoBehaviour {
     private AudioClip[] buttonSounds, interactSounds, BGMs;
-    private AudioSource audioSourceNormal = null, audioSourceLoop = null;
+    public AudioSource audioSourceNormal = null, audioSourceLoop = null;
     private System.Random random;
     private bool isSceneSoundsReady = false;
     

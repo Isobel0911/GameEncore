@@ -84,8 +84,8 @@ public class Conversation : MonoBehaviour {
             Debug.LogError("PauseMenuToggle: CanvasGroup component not found!");
         }
         fadePanel = GameObject.Find("FadePanel");
-        fadingScript = fadePanel.GetComponent<BackgroundFading>();
-        if (fadingScript == null) fadingScript = fadePanel.AddComponent<BackgroundFading>();
+        fadingScript = fadePanel?.GetComponent<BackgroundFading>();
+        if (fadingScript == null) fadingScript = fadePanel?.AddComponent<BackgroundFading>();
         GameObject sceneSoundsGB = GameObject.Find("In-Game Transition");
         if (sceneSoundsGB == null) sceneSoundsGB = new GameObject("In-Game Transition");
         sceneSoundsScript = sceneSoundsGB.GetComponent<SceneSounds>();
