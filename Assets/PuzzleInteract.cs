@@ -17,17 +17,15 @@ public class PuzzleInteract : MonoBehaviour, IInteractable
 
     public bool Interact(Interactor interactor) {
         // Open puzzle scene
-        if (!hasSolved) {
+        if (!hasStarted && !hasSolved) {
             hasStarted = true;
-            Debug.Log("Open Scene request");
             Cursor.visible = true;
             SceneManager.LoadScene("SlidingTilePuzzle", LoadSceneMode.Additive);
-            return true;
-        } else {
+        } else if (hasStarted && hasSolved) {
             // show dialogue says you have decoded the documents.
             SceneManager.UnloadSceneAsync("SlidingTilePuzzle");
             FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
-            return true;
         }
+        return true;
     }
 }

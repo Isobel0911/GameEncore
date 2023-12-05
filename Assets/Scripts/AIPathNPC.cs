@@ -237,13 +237,17 @@ public class AIPathNPC : MonoBehaviour {
 
     private void setNextValidPath() {
         int count = 0;
+        int tmp = currentWaypointIdx;
+        int tmpPrev = prevWaypointIdx;
         do {
             navMeshAgent.SetDestination(waypoints[currentWaypointIdx].waypoint.transform.position);
             currentWaypointIdx = (currentWaypointIdx + 1) % waypoints.Length;
             prevWaypointIdx = (prevWaypointIdx + 1) % waypoints.Length;
             count++;
-            if (count > waypoints.Length + 1) {
+            if (count > waypoints.Length - 1) {
                 pathInvalid = true;
+                currentWaypointIdx = tmp;
+                prevWaypointIdx = tmpPrev;
                 navMeshAgent.SetDestination(transform.position);
                 return;
             }

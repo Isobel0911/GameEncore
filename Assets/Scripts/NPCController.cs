@@ -4,22 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
-public class NPCController : MonoBehaviour
-{
+public class NPCController : MonoBehaviour {
     Animator animator;
     public GameObject MainCharacter;
     public int alertValue;
     public ProgressBar pb;
     public AlertController ac;
 
-    void Start()
-    {
+    void Start() {
         ac = MainCharacter.GetComponent<AlertController>();
         animator = GetComponent<Animator>();
     }
 
-    void Update()
-    {
+    void Update() {
 
         if (ac.alert >= 80) {
             print("end game/ game over scene");
@@ -28,6 +25,7 @@ public class NPCController : MonoBehaviour
 
         
 
+    void Update() {
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
@@ -43,8 +41,7 @@ public class NPCController : MonoBehaviour
                 if (ac.alert < 0){
                     ac.alert = 0;
                 }
-            }
-            else {
+            } else {
                 // check if walking fbi_01
                 // if (gameObject.name == "Walking_FBI_01") {
                 //     print("now we are in the range of walking fbi");
@@ -55,16 +52,14 @@ public class NPCController : MonoBehaviour
                 //         print("you are solving puzzle!!");
                 //     }
                 // }
-                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-                {
+                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {
                     float calculatedAlertValue = (50 * (1f - distance / coverDistanceOnAngle));
                     if (ac.alert < calculatedAlertValue) {
                         ac.alert = calculatedAlertValue;
                     } else if (ac.alert > calculatedAlertValue) {
                         ac.alert = Math.Max(ac.alert - decreaseConstant, calculatedAlertValue);
                     }
-                }
-                else {
+                } else {
                     float calculatedAlertValue = (30 * (1f - distance / coverDistanceOnAngle));
                     if (ac.alert < calculatedAlertValue) {
                         ac.alert = calculatedAlertValue;
@@ -73,8 +68,7 @@ public class NPCController : MonoBehaviour
                     }
                 }
             }
-        }
-        else {
+        } else {
             ac.alert -= decreaseConstant;
             if (ac.alert < 0){
                 ac.alert = 0;
@@ -82,8 +76,7 @@ public class NPCController : MonoBehaviour
         }
     }
 
-        bool CheckObstacle(Vector3 from, Vector3 to, float distance)
-    {
+    bool CheckObstacle(Vector3 from, Vector3 to, float distance) {
         RaycastHit hit;
         if (Physics.Raycast(from, to - from, out hit, distance))
         {
