@@ -29,17 +29,17 @@ public class SceneTransition : MonoBehaviour {
 
     // Triggered by clicking scene transition button
     public void TransitScene(string sceneName) {
-        fadePanel.SetActive(true);
-        fadingScript.callbackFunction = () => {
+        fadePanel?.SetActive(true);
+        fadingScript?.callbackFunction = () => {
             this.sceneChanged(sceneName);
         };
         if (sceneName == "MainGame") {
-            fadingScript.callFuncDuringProcess = (progress) => {
-                sceneSoundsScript.SetBGMSoundVolume(1f - progress);
+            fadingScript?.callFuncDuringProcess = (progress) => {
+                sceneSoundsScript?.SetBGMSoundVolume(1f - progress);
             };
         }
         // from 0% to 100% in 1 second with original color
-        fadingScript.FadeTo(1f, 1f);
+        fadingScript?.FadeTo(1f, 1f);
     }
 
     public void sceneChanged(string sceneName) {
