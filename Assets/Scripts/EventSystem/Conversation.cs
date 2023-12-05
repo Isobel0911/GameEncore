@@ -86,7 +86,6 @@ public class Conversation : MonoBehaviour {
 
     public void ConversationStarts(object sender, ConversationEventArgs e) {
         if (!canProceedToNextConversation) return;
-        ToggleConversationPanel();
 
         bool isStart;
         int convTextIdx;
@@ -160,7 +159,8 @@ public class Conversation : MonoBehaviour {
                 fadingScript.FadeTo(0f, 1f);
                 EventManager.instance.shouldWaitForFade = true;
             }
-        } else if (lineCounter == conversation.Count) {
+        }
+        if (lineCounter >= conversation.Count) {
             // last
             EventManager.instance.conversationEnds = true;
         }
@@ -169,6 +169,9 @@ public class Conversation : MonoBehaviour {
             canProceedToNextConversation = false; // stop conversation
             // StartCoroutine(WaitAndAllowNextConversation(1f)); // for 1 seconds
             StartCoroutine(WaitAndAllowNextConversation(0f));
+        }
+        if (lineCounter == 1 && canvasGroup.alpha == 0f) {
+            StartCoroutine(FadeInCanvasGroup(canvasGroup, 1f));
         }
     }
 
@@ -187,11 +190,13 @@ public class Conversation : MonoBehaviour {
             // inputs.cursorLocked = true;
             // inputs.cursorInputForLook = true;
             StartCoroutine(TransitionToNextScene());
+            Debug.Log("ToggleConversationPanel(): end");
         } else {
             // inputs.cursorLocked = false;
             // inputs.cursorInputForLook = false;
             canvasGroup.interactable = true;
             canvasGroup.blocksRaycasts = true;
+            Debug.Log("ToggleConversationPanel(): start");
         }
     }
 
@@ -208,6 +213,23 @@ public class Conversation : MonoBehaviour {
         } else {
             yield return StartCoroutine(FadeOutCanvasGroup(canvasGroup, 0.5f));
         }
+    }
+
+    private IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration) {
+        float startAlpha = canvasGroup.alpha;
+        float time = 0;
+
+        while (time < duration) {
+            time += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, 1, time / duration);
+            yield return null;
+        }
+
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1;
+        EventManager.convInProgress = true;
+        EventManager.instance.shouldWaitForFade = false;
     }
 
     private IEnumerator FadeOutCanvasGroup(CanvasGroup canvasGroup, float duration) {

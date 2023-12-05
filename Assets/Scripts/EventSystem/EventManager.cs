@@ -35,9 +35,9 @@ public class EventManager : MonoBehaviour {
     private CanvasGroup canvasGroup;
     private SceneSounds sceneSounds;
     // [HideInInspector]public bool conversationEnds = false;
-    [HideInInspector]public static bool convInProgress = false;
+    public static bool convInProgress = false;
     private AlertController alert;
-    [HideInInspector]public bool invokedJessica = false;
+    public bool invokedJessica = false;
 
     private void Awake() {
         instance = this;
@@ -52,6 +52,7 @@ public class EventManager : MonoBehaviour {
     }
     
     private void Update() {
+
         if (initialStop && !hasInitialized) {
             hasInitialized = true;
             sceneSounds?.PlayInteractSound();
@@ -61,6 +62,7 @@ public class EventManager : MonoBehaviour {
         if (alert != null && !invokedJessica && alert.triggeredJessica) {
             invokedJessica = true;
             conversationEnds = false;
+            sceneSounds?.PlayInteractSound();
             OnConversation?.Invoke(this, new ConversationEventArgs(1, true, null, null));
             return;
         }
