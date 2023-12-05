@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour {
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
     
-    public bool talkedToJessica = false;
+    [HideInInspector] public bool talkedToJessica = false;
 
     Message[] currentMessages;
     Actor[] currentActors;
@@ -25,14 +25,27 @@ public class DialogueManager : MonoBehaviour {
     private Action<object[]> callbackFunction;
     private object[] callbackParams;
 
+    // multi-function controller
+    private bool multiFunc = false;
+    private Action<object[]>[] multiFunction;
+    private object[][] multiParams;
+    public static bool lockMulti = false;
+
+    private SceneSounds sceneSounds;
+
+    void Awake() {
+        playerInput = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature")?.GetComponent<PlayerInput>();
+        sceneSounds = GameObject.Find("In-Game Transition")?.GetComponent<SceneSounds>();
+    }
+
     void Start() {
         backgroundBox.transform.localScale = Vector3.zero;
-        playerInput = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").GetComponent<PlayerInput>();
     }
     
     void Update()  {
         // press space to proceed next message
-        if (isActive && Input.GetKeyDown(KeyCode.Tab)) {
+        if (isActive && Input.GetKeyDown(KeyCode.Tab) &&
+            (!multiFunc || !lockMulti)) {
             NextMessage();
         }
     }
@@ -50,7 +63,7 @@ public class DialogueManager : MonoBehaviour {
         currentActors = actors;
         ActiveMessage = 0;
 
-        playerInput.DeactivateInput();
+        playerInput?.DeactivateInput();
 
         DisplayMessage();
         backgroundBox.LeanScale(Vector3.one, 0.5f);
@@ -71,20 +84,50 @@ public class DialogueManager : MonoBehaviour {
         currentActors = actors;
         ActiveMessage = 0;
 
-        playerInput.DeactivateInput();
+        playerInput?.DeactivateInput();
 
         DisplayMessage();
         if (!prevActive) backgroundBox.LeanScale(Vector3.one, 0.5f);
-        
     }
 
+    public void OpenDialogue(Message[] messages, Actor[] actors,
+                             bool isCaughtCurr,
+                             Action<object[]>[] callbackFunction, object[][] callbackParams) {
+        if (isActive && isCaught || isActive && !isCaughtCurr) return;
+        bool prevActive = isActive;
+        isActive = true;
+        multiFunc = true;
+        this.multiFunction = callbackFunction;
+        this.multiParams = callbackParams;
+        isCaught = isCaughtCurr;
+        // gameObject.SetActive(true);
+
+        currentMessages = messages;
+        currentActors = actors;
+        ActiveMessage = 0;
+
+        playerInput?.DeactivateInput();
+
+        DisplayMessage();
+        if (!prevActive) backgroundBox.LeanScale(Vector3.one, 0.5f);
+    }
+    
+
     void DisplayMessage()  {
+        sceneSounds?.PlayInteractSound();
+        lockMulti = true;
         Message messageToDisplay = currentMessages[ActiveMessage];
         messageText.text = messageToDisplay.message;
 
         Actor actorToDisplay = currentActors[messageToDisplay.actorId];
         actorName.text = actorToDisplay.name;
         actorImage.sprite = actorToDisplay.sprite;
+        if (multiFunc) {
+            if (multiFunction != null &&
+                multiFunction.Length > ActiveMessage &&
+                multiFunction[ActiveMessage] != null)
+                multiFunction[ActiveMessage](multiParams[ActiveMessage]);
+        }
     }
 
     public void NextMessage() {
@@ -110,7 +153,7 @@ public class DialogueManager : MonoBehaviour {
         if (callbackFunction != null) {
             callbackFunction(callbackParams);
         } else {
-            playerInput.ActivateInput();
+            playerInput?.ActivateInput();
         }
     }
 }

@@ -38,6 +38,7 @@ public class EventManager : MonoBehaviour {
     public static bool convInProgress = false;
     private AlertController alert;
     public bool invokedJessica = false;
+    public bool disableConversation = false;
 
     private void Awake() {
         instance = this;
@@ -49,9 +50,13 @@ public class EventManager : MonoBehaviour {
         myGameObject = GameObject.Find("Conversation");       canvasGroup  = myGameObject?.GetComponent<CanvasGroup>();
         myGameObject = GameObject.Find("In-Game Transition"); sceneSounds  = myGameObject?.GetComponent<SceneSounds>();
         alert = GameObject.FindObjectOfType<AlertController>();
+        if (disableConversation) {
+            initialStop = false; hasInitialized = true;
+        }
     }
     
     private void Update() {
+        if (disableConversation) return;
 
         if (initialStop && !hasInitialized) {
             hasInitialized = true;
