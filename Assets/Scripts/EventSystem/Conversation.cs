@@ -51,13 +51,17 @@ public class Conversation : MonoBehaviour {
 
     // Task 2 instruction - talk to jessica
     public List<string> jessicaInstruction = new() {
-        // "Woah, I gotta say you are pretty talented at crime.",
         "Bank's much easier than casino, huh?",
         "Now, see the lady at the front desk? She's our friend. Ask her about Lost & Found and try to find HER key with BLUE eyes."
     };
     public List<string> getCardConv = new() {
         "That's the key we want. It unlocks most of the door.",
         "Go explore and find some valueables worth 5000 dollars."
+    };
+
+    public List<string> get5000Conv = new() {
+        "Woah, I gotta say you are pretty talented at crime.",
+        "Now go to the computer in the meeting room."
     };
 
     void Awake() {
@@ -140,6 +144,13 @@ public class Conversation : MonoBehaviour {
                         fadingPanelEnd = false;
                         conversationEndMode = 1;
                         Debug.Log("get card conv");
+                        break;
+                    case 3:
+                        conversation = get5000Conv;
+                        fadingPanelStart = false;
+                        fadingPanelEnd = false;
+                        conversationEndMode = 1;
+                        Debug.Log("get 5000");
                         break;
                     default:
                         break;

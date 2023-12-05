@@ -40,6 +40,7 @@ public class EventManager : MonoBehaviour {
     private DialogueManager dialogue;
     public bool invokedJessica = false;
     public bool invokedCard = false;
+    public bool invoked5000 = false;
     public bool disableConversation = false;
 
     private void Awake() {
@@ -80,6 +81,13 @@ public class EventManager : MonoBehaviour {
             sceneSounds?.PlayInteractSound();
             
             OnConversation?.Invoke(this, new ConversationEventArgs(2, true, null, null));
+            return;
+        }
+        if (alert != null && !invoked5000 && alert.triggered5000) {
+            invoked5000 = true;
+            conversationEnds = false;
+            sceneSounds?.PlayInteractSound();
+            OnConversation?.Invoke(this, new ConversationEventArgs(3, true, null, null));
             return;
         }
         // Press Tab for next conversation sentence

@@ -150,7 +150,7 @@ public class DialogueManager : MonoBehaviour {
             if (currentActors.Length > 1 && currentActors[1].name == "ID Card") {
                 Debug.Log("talkedToCard");
                 talkedToCard = true;
-                EventManager.OnConversation += FindObjectOfType<Conversation>().ConversationStarts;
+                // EventManager.OnConversation += FindObjectOfType<Conversation>().ConversationStarts;
             }
         }
     }

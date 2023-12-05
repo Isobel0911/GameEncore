@@ -30,9 +30,9 @@ public class AlertController : MonoBehaviour {
             triggeredJessica = true;
         }
 
-        // if (money >= 5000 && triggeredJessica)
-        // {
-
-        // }
+        if (money >= 5000 && triggeredJessica && !triggered5000)
+        {
+            triggered5000 = true;
+        }
     }
 }
