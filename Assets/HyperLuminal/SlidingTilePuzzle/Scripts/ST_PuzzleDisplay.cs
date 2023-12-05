@@ -215,16 +215,15 @@ public class ST_PuzzleDisplay : MonoBehaviour
 		{
 			// iterate over all the tiles and check if they are in the correct position.
 			Complete = true;
-			for(int j = Height - 1; j >= 0; j--)
-			{
-				for(int i = 0; i < Width; i++)
-				{
+			for(int j = Height - 1; j >= 0; j--) {
+				for(int i = 0; i < Width; i++) {
 					// check if this tile has the correct grid display location.
-					if(TileDisplayArray[i,j].GetComponent<ST_PuzzleTile>().CorrectLocation == false)  
-					{
+					if(TileDisplayArray[i,j].GetComponent<ST_PuzzleTile>().CorrectLocation == false) {
 						Complete = false;
+						break;
 					}
 				}
+				if (!Complete) break;
 			}
 
 			yield return null;

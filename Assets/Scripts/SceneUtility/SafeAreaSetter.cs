@@ -47,4 +47,7 @@ public class SafeAreaSetter : MonoBehaviour
 
 		
 	}
+	public void DebugOutput(string s) {
+		Debug.Log(s);
+	}
 }

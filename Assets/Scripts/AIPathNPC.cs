@@ -45,6 +45,7 @@ public class AIPathNPC : MonoBehaviour {
     private Animator animator;
     private NPCController npcController;
     private bool pathInvalid = false;
+    public static bool hasHaltAlert = false;
 
     void Start() {
         animator = GetComponent<Animator>();
@@ -105,6 +106,8 @@ public class AIPathNPC : MonoBehaviour {
             return;
         }
         resetNPCAnimator();
+        if (hasHaltAlert) {navMeshAgent.isStopped  = true; return;}
+        else {navMeshAgent.isStopped  = false;}
         if (waypoints.Length == 0) return;
         if (!isWaiting) {
             if (!navMeshAgent.pathPending && navMeshAgent.remainingDistance < 0.7f) {

@@ -18,6 +18,7 @@ public class NPCController : MonoBehaviour {
     private static bool hasCaught = false;
     private BackgroundFading fadingScript;
     private GameObject fadePanel;
+    public static bool hasHaltAlert = false;
 
     void Awake() {
         fadePanel = GameObject.Find("FadePanel");
@@ -48,6 +49,7 @@ public class NPCController : MonoBehaviour {
         
 
     void Update() {
+        if (hasHaltAlert) return;
         if (ac.alert >= 80 && !hasCaught) {
             hasCaught = true;
             FindObjectOfType<DialogueManager>().OpenDialogue(messagesCaught, actorsCaught, true,

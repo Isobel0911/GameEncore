@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameTransition : MonoBehaviour {
     private bool hasStarted = false;
@@ -12,6 +13,8 @@ public class InGameTransition : MonoBehaviour {
     public int mode = 0;
     public Sprite jackSprite;
     public Sprite youSprite;
+    public bool isCreditTutorial = false;
+    public bool disableForever = false;
 
 
     void Start() {
@@ -21,7 +24,6 @@ public class InGameTransition : MonoBehaviour {
     void findFadePanel() {
         fadePanel = GameObject.Find("In-Game Transition");
         sceneSounds = fadePanel?.GetComponent<SceneSounds>();
-        sceneTransitions = fadePanel?.GetComponent<SceneTransition>();
         fadePanel = GameObject.Find("FadePanel");
         fadingScript = fadePanel?.GetComponent<BackgroundFading>();
         if (fadingScript == null) fadingScript = fadePanel?.AddComponent<BackgroundFading>();
@@ -29,6 +31,7 @@ public class InGameTransition : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (disableForever) { return; }
         switch(mode) {
             case 0:
                 if (!hasStarted) {
@@ -36,7 +39,7 @@ public class InGameTransition : MonoBehaviour {
                     fadingScript.callbackFunction = () => {
                         disableFadePanel();
                     };
-                    fadingScript.FadeTo(0f, 3f);
+                    fadingScript.FadeTo(0f, 2f);
                 }
                 break;
             case 1:
@@ -45,7 +48,7 @@ public class InGameTransition : MonoBehaviour {
                     fadingScript.callbackFunction = () => {
                         disableFadePanel();
                     };
-                    fadingScript.FadeTo(0f, 3f);
+                    fadingScript.FadeTo(0f, 2f);
                 }
                 break;
             case 2:
@@ -61,6 +64,12 @@ public class InGameTransition : MonoBehaviour {
                 break;
             default:
                 break;
+        }
+        if (isCreditTutorial && !disableForever && !fadePanel.activeSelf && Input.anyKeyDown) {
+            disableForever = true;
+            fadePanel.SetActive(true);
+            fadingScript.callbackFunction = () => {};
+            fadingScript.FadeTo(1f, 1f);
         }
     }
 
@@ -117,10 +126,11 @@ public class InGameTransition : MonoBehaviour {
         DialogueManager.lockMulti = isEnd;
         if (isEnd) {
             fadePanel.SetActive(true);
+            sceneTransitions = fadePanel?.AddComponent<SceneTransition>();
             sceneSounds?.PlayBGMOnce(3);
             fadingScript.callbackFunction = () => {
-                sceneTransitions.init(sceneSounds, fadePanel, fadingScript);
-                sceneTransitions.TransitScene("GameFinal02");
+                sceneTransitions?.init(sceneSounds, fadePanel, fadingScript);
+                sceneTransitions?.TransitScene("GameFinal02");
             };
             fadingScript.FadeTo(1f, 2f);
         }

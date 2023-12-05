@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ConversationPlayerInputController : MonoBehaviour {
+
     // private CanvasGroup canvasGroup;
     private PlayerInput playerInput;
 
@@ -16,7 +17,7 @@ public class ConversationPlayerInputController : MonoBehaviour {
         // Get the Player Input component on PlayerArmature
         GameObject playerArmature = nestedParentArmature.transform.Find("PlayerArmature")?.gameObject;
         if (playerArmature != null) {
-            playerInput = playerArmature.GetComponent<PlayerInput>();
+            playerInput = playerArmature?.GetComponent<PlayerInput>();
         }
 
         // // Check if Canvas/SafeAreaPanel/Conversation exists
@@ -43,9 +44,9 @@ public class ConversationPlayerInputController : MonoBehaviour {
     // }
 
     public void DeactivateInputOnConversation(object sender, EventArgs e) {
-        playerInput.DeactivateInput();
+        if (playerInput != null && playerInput.inputIsActive) playerInput.DeactivateInput();
     }
     public void ActivateInputOnConversationEnd(object sender, EventArgs e) {
-        playerInput.ActivateInput();
+        if (playerInput != null && !playerInput.inputIsActive) playerInput.ActivateInput();
     }
 }

@@ -102,8 +102,10 @@ public class Interactor : MonoBehaviour {
                 {
                     if(PuzzleInteract.hasStarted && !PuzzleInteract.hasSolved)
                     otherUI.SetActive(false);
+                    
                 }
                 if (interactable != null && Input.GetKeyDown(KeyCode.E)) {
+                    Debug.Log("interactable HIT");
                     interactable.Interact(this);
                 }
             }

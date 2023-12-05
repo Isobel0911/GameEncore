@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class FinalStageController : MonoBehaviour {
-    AudioSource ac;
+    AudioSource ac = null;
     GameObject[] texts;
     private bool hasStarted = false;
     public bool isCredit = false;
@@ -43,14 +43,14 @@ public class FinalStageController : MonoBehaviour {
     }
 
     IEnumerator FadeOutAudio() {
-        float startVolume = ac.volume;
-
-        while (ac.volume > 0) {
-            ac.volume -= startVolume * Time.deltaTime / 3;
-            yield return null;
+        if (ac != null) {
+            float startVolume = ac.volume;
+            while (ac.volume > 0) {
+                ac.volume -= startVolume * Time.deltaTime / 3;
+                yield return null;
+            }
         }
 
-        if (isCredit) SceneManager.LoadScene("MainGame");
-        else SceneManager.LoadScene("Menu");
+        if (!isCredit) SceneManager.LoadScene("Menu");
     }
 }
