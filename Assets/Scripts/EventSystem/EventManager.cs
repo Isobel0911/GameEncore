@@ -40,6 +40,7 @@ public class EventManager : MonoBehaviour {
     private DialogueManager dialogue;
     public bool invokedJessica = false;
     public bool invokedCard = false;
+    public bool disableConversation = false;
 
     private void Awake() {
         instance = this;
@@ -52,9 +53,13 @@ public class EventManager : MonoBehaviour {
         myGameObject = GameObject.Find("In-Game Transition"); sceneSounds  = myGameObject?.GetComponent<SceneSounds>();
         alert = FindObjectOfType<AlertController>();
         dialogue = FindObjectOfType<DialogueManager>();
+        if (disableConversation) {
+            initialStop = false; hasInitialized = true;
+        }
     }
     
     private void Update() {
+        if (disableConversation) return;
 
         if (initialStop && !hasInitialized) {
             hasInitialized = true;

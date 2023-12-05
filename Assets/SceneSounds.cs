@@ -13,20 +13,23 @@ public class SceneSounds : MonoBehaviour {
         string listenPosGameObjectName = "Main Camera";
         GameObject sceneAudio = GameObject.Find(listenPosGameObjectName);
         if (sceneAudio == null) sceneAudio = new GameObject(listenPosGameObjectName);
-        audioSourceNormal = sceneAudio.GetComponent<AudioSource>();
+        audioSourceNormal = sceneAudio.GetComponent<AudioSource>(); audioSourceNormal.loop = false;
         if (audioSourceNormal == null) audioSourceNormal = sceneAudio.AddComponent<AudioSource>();
         audioSourceLoop = sceneAudio.AddComponent<AudioSource>(); audioSourceLoop.loop = true;
         AudioListener audioListener = sceneAudio.GetComponent<AudioListener>();
         if (audioListener == null) audioListener = sceneAudio.AddComponent<AudioListener>();
         buttonSounds = new AudioClip[7];
         interactSounds = new AudioClip[3];
-        BGMs = new AudioClip[3];
+        BGMs = new AudioClip[5];
         for (int i = 0; i < 7; i++)
             buttonSounds[i] = Resources.Load<AudioClip>($"scene_button_0{i+1}");
         for (int i = 0; i < 3; i++)
             interactSounds[i] = Resources.Load<AudioClip>($"scene_interact_0{i+1}");
         BGMs[0] = Resources.Load<AudioClip>("home_talking_bgm");
         BGMs[1] = Resources.Load<AudioClip>("main_game_bgm_01");
+        BGMs[2] = Resources.Load<AudioClip>("dark");
+        BGMs[3] = Resources.Load<AudioClip>("dark_run");
+        BGMs[4] = Resources.Load<AudioClip>("bgm_final");
         random = new System.Random();
         isSceneSoundsReady = true;
     }
@@ -55,6 +58,11 @@ public class SceneSounds : MonoBehaviour {
         if (!isSceneSoundsReady) Start();
         audioSourceLoop.clip = BGMs[idx];
         audioSourceLoop.Play();
+    }
+
+    public void PlayBGMOnce(int idx) {
+        if (!isSceneSoundsReady) Start();
+        audioSourceNormal.PlayOneShot(BGMs[idx], 1f);
     }
 
     public float GetBGMSoundVolume() {
