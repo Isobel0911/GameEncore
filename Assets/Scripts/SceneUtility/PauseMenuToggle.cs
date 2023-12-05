@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CanvasGroup))] 
 public class PauseMenuToggle : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
     public StarterAssets.StarterAssetsInputs inputs;
+    private PlayerInput playerInput;
+    private GameQuitter quitter;
     void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
@@ -14,6 +18,8 @@ public class PauseMenuToggle : MonoBehaviour
         {
             Debug.LogError("PauseMenuToggle: CanvasGroup component not found!");
         }
+        playerInput = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").GetComponent<PlayerInput>();
+        quitter = GetComponent<GameQuitter>();
     }
 
     // Update is called once per frame
@@ -21,22 +27,28 @@ public class PauseMenuToggle : MonoBehaviour
     {
         if (Input.GetKeyUp (KeyCode.Escape)) {
             if (canvasGroup.interactable) {         //disable in-game menu, enable game
-                inputs.cursorLocked = true;
-                inputs.cursorInputForLook = true;
+                // inputs.cursorLocked = true;
+                // inputs.cursorInputForLook = true;
                 canvasGroup.interactable = false;
                 canvasGroup.blocksRaycasts = false;
                 canvasGroup.alpha = 0f;
-                Time.timeScale = 1f;
+                // Time.timeScale = 1f;
+                playerInput.ActivateInput();
             }
             else                                    //enable in-game menu, disable game
             {
-                inputs.cursorLocked = false;
-                inputs.cursorInputForLook = false;
+                // inputs.cursorLocked = false;
+                // inputs.cursorInputForLook = false;
                 canvasGroup.interactable = true;
                 canvasGroup.blocksRaycasts = true;
                 canvasGroup.alpha = 1f;
-                Time.timeScale = 0f;
+                // Time.timeScale = 0f;
+                playerInput.DeactivateInput();
             }
+        }
+        if (canvasGroup.interactable && Input.GetKeyUp (KeyCode.Q))
+        {
+            quitter.QuitGame();
         }
     }
 }

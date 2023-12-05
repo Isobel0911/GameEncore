@@ -37,7 +37,9 @@ public class EventManager : MonoBehaviour {
     // [HideInInspector]public bool conversationEnds = false;
     public static bool convInProgress = false;
     private AlertController alert;
+    private DialogueManager dialogue;
     public bool invokedJessica = false;
+    public bool invokedCard = false;
 
     private void Awake() {
         instance = this;
@@ -48,7 +50,8 @@ public class EventManager : MonoBehaviour {
         myGameObject = GameObject.Find("ConversationText");   conversation = myGameObject?.GetComponent<Conversation>();
         myGameObject = GameObject.Find("Conversation");       canvasGroup  = myGameObject?.GetComponent<CanvasGroup>();
         myGameObject = GameObject.Find("In-Game Transition"); sceneSounds  = myGameObject?.GetComponent<SceneSounds>();
-        alert = GameObject.FindObjectOfType<AlertController>();
+        alert = FindObjectOfType<AlertController>();
+        dialogue = FindObjectOfType<DialogueManager>();
     }
     
     private void Update() {
@@ -64,6 +67,14 @@ public class EventManager : MonoBehaviour {
             conversationEnds = false;
             sceneSounds?.PlayInteractSound();
             OnConversation?.Invoke(this, new ConversationEventArgs(1, true, null, null));
+            return;
+        }
+        if (dialogue != null && !invokedCard && dialogue.talkedToCard) {
+            invokedCard = true;
+            conversationEnds = false;
+            sceneSounds?.PlayInteractSound();
+            
+            OnConversation?.Invoke(this, new ConversationEventArgs(2, true, null, null));
             return;
         }
         // Press Tab for next conversation sentence

@@ -11,6 +11,7 @@ public class AlertController : MonoBehaviour {
     // Start is called before the first frame update
     private Conversation conversationScript;
     [HideInInspector]public bool triggeredJessica;
+    [HideInInspector]public bool triggered5000;
     public EventManager eventManager;
 
 
@@ -28,5 +29,10 @@ public class AlertController : MonoBehaviour {
         if (money >= 2000 && !triggeredJessica) {
             triggeredJessica = true;
         }
+
+        // if (money >= 5000 && triggeredJessica)
+        // {
+
+        // }
     }
 }

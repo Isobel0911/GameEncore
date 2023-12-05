@@ -44,15 +44,20 @@ public class Conversation : MonoBehaviour {
     // Task 1 instruction - test ability
     public List<string> moneyInstruction = new() {
         "Good. You are here. Let's measure your capability first.",
-        "Go find some valueables worth 1000 dollars. Cash, jewelry, whatever.",
+        "Go find some valueables worth 2000 dollars. Cash, jewelry, whatever.",
         "Bank employees and guards are vigilant, so don't risk in front of them.",
         "If you're caught, cry for your family in jail. You only have this one chance."
     };
 
     // Task 2 instruction - talk to jessica
     public List<string> jessicaInstruction = new() {
-        "Woah, I gotta say you are pretty talented at crime.",
+        // "Woah, I gotta say you are pretty talented at crime.",
+        "Bank's much easier than casino, huh?",
         "Now, see the lady at the front desk? She's our friend. Ask her about Lost & Found and try to find HER key with BLUE eyes."
+    };
+    public List<string> getCardConv = new() {
+        "That's the key we want. It unlocks most of the door.",
+        "Go explore and find some valueables worth 5000 dollars."
     };
 
     void Awake() {
@@ -128,6 +133,13 @@ public class Conversation : MonoBehaviour {
                         fadingPanelStart = false;
                         fadingPanelEnd = false;
                         conversationEndMode = 1;
+                        break;
+                    case 2:
+                        conversation = getCardConv;
+                        fadingPanelStart = false;
+                        fadingPanelEnd = false;
+                        conversationEndMode = 1;
+                        Debug.Log("get card conv");
                         break;
                     default:
                         break;
