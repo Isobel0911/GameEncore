@@ -15,6 +15,7 @@ public class PuzzleInteract : MonoBehaviour, IInteractable {
 
     public static bool hasSolved = false;
     public static bool hasStarted = false;
+    public static bool hasDialogued = false;
 
     public void Awake() {
         
@@ -26,8 +27,10 @@ public class PuzzleInteract : MonoBehaviour, IInteractable {
             hasStarted = true;
             Cursor.visible = true;
             SceneManager.LoadScene("SlidingTilePuzzle", LoadSceneMode.Additive);
-        } else if (hasStarted && hasSolved) {
+        } else if (hasStarted && hasSolved && !hasDialogued) {
             // show dialogue says you have decoded the documents.
+            VaultDoorEnabled.vaultEnabled = true;
+            hasDialogued = true;
             SceneManager.UnloadSceneAsync("SlidingTilePuzzle");
             FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         }
