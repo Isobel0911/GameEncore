@@ -22,7 +22,7 @@ public class NPCController : MonoBehaviour {
             print("end game/ game over scene");
             SceneManager.LoadScene("GameOverAlert");
         }
-
+    }
         
 
     void Update() {
