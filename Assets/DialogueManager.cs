@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour {
     public TextMeshProUGUI messageText;
     public RectTransform backgroundBox;
     
-    [HideInInspector] public bool talkedToJessica = false;
+    public bool talkedToJessica = false;
 
     Message[] currentMessages;
     Actor[] currentActors;

@@ -62,6 +62,9 @@ public class NPCController : MonoBehaviour {
                 }, new object[] {fadePanel, fadingScript});
             return;
         }
+
+
+
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
@@ -70,6 +73,8 @@ public class NPCController : MonoBehaviour {
         float angle = Vector3.Angle(transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").forward, MainCharacterPosition - myPosition);
         float coverDistanceOnAngle = angle * (-0.0556f) + 10f;
 
+
+        
         
         if (distance <= coverDistanceOnAngle && angle <= 90f) {
             if (CheckObstacle(myPosition, MainCharacterPosition, distance) == true) {
@@ -78,16 +83,15 @@ public class NPCController : MonoBehaviour {
                     ac.alert = 0;
                 }
             } else {
-                // check if walking fbi_01
-                // if (gameObject.name == "Walking_FBI_01") {
-                //     print("now we are in the range of walking fbi");
-                //     Scene currentScene = SceneManager.GetActiveScene();
-                //     Debug.Log("Current Scene: " + currentScene.name);
-
-                //     if (currentScene.name == "SlidingTilePuzzle") {
-                //         print("you are solving puzzle!!");
-                //     }
-                // }
+                // check if talked to jessica
+                GameObject gameObjectA = GameObject.Find("Canvas/SafeAreaPanel/DialogueBox");
+                DialogueManager scriptA = gameObjectA.GetComponent<DialogueManager>();
+                bool check = scriptA.talkedToJessica;
+                if (gameObject.name == "FrontDesk_Boss" && check == true) {
+                    ac.alert = 0;
+                    enabled = false;
+                    return;
+                }
                 if (PuzzleInteract.hasStarted && !PuzzleInteract.hasSolved && !hasCaught) {
                     ac.alert = 100;
                     hasCaught = true;
