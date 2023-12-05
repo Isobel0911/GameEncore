@@ -60,6 +60,7 @@ public class EventManager : MonoBehaviour {
         }
         if (alert != null && !invokedJessica && alert.triggeredJessica) {
             invokedJessica = true;
+            conversationEnds = false;
             OnConversation?.Invoke(this, new ConversationEventArgs(1, true, null, null));
             return;
         }

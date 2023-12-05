@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class AlertController : MonoBehaviour
-{
+public class AlertController : MonoBehaviour {
     public ProgressBar pb;
     public float alert = 0;
 
@@ -12,27 +11,22 @@ public class AlertController : MonoBehaviour
     // Start is called before the first frame update
     private Conversation conversationScript;
     [HideInInspector]public bool triggeredJessica;
-    void Start()
-    {
+    public EventManager eventManager;
+
+
+    void Start() {
         conversationScript = GameObject.FindObjectOfType<Conversation>();
         triggeredJessica = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         moneyText.text = money.ToString();
         pb.BarValue = (int) alert;
 
         // trigger event
-        if (money > 2000 && !triggeredJessica)
-        {
-            conversationScript.conversation = conversationScript.jessicaInstruction;
-            EventManager.OnConversation += conversationScript.ConversationStarts;
-            EventManager.OnConversationEnd += conversationScript.ConversationEnds;
-            Debug.Log("money > 2000");
+        if (money >= 2000 && !triggeredJessica) {
             triggeredJessica = true;
         }
-        
     }
 }

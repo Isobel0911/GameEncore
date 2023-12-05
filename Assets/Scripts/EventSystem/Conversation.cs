@@ -104,7 +104,7 @@ public class Conversation : MonoBehaviour {
             callbackFunction = e.callbackFunction;
             callbackParams = e.callbackParams;
         }
-
+        
         if (isStart){
             EventManager.convInProgress = true;
             lineCounter = 0;
@@ -179,7 +179,6 @@ public class Conversation : MonoBehaviour {
 
     public void ConversationEnds(object sender, EventArgs e) {
         ToggleConversationPanel();
-        EventManager.OnConversationEnd -= ConversationEnds;
     }
 
     private void ToggleConversationPanel() {
