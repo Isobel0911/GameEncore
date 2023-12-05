@@ -30,7 +30,8 @@ public class SceneSounds : MonoBehaviour {
         BGMs[1] = Resources.Load<AudioClip>("main_game_bgm_01");
         BGMs[2] = Resources.Load<AudioClip>("dark");
         BGMs[3] = Resources.Load<AudioClip>("dark_run");
-        BGMs[4] = Resources.Load<AudioClip>("bgm_final");
+        BGMs[4] = Resources.Load<AudioClip>("fast_rising");
+        BGMs[5] = Resources.Load<AudioClip>("bgm_final");
         random = new System.Random();
         isSceneSoundsReady = true;
     }

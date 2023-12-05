@@ -137,7 +137,7 @@ public class DialogueManager : MonoBehaviour {
             DisplayMessage();
         } else {
             // close dialogue
-            Debug.Log("close");
+            sceneSounds?.PlayInteractSound();
             isActive = false;
             backgroundBox.LeanScale(Vector3.zero, 0.5f)
                          .setEaseInOutExpo()

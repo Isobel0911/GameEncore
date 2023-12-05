@@ -64,6 +64,18 @@ public class Conversation : MonoBehaviour {
         "Now go to the computer in the meeting room."
     };
 
+    // Self-Talking
+    public List<string> selfTalking = new() {
+        "Whew, I finally paid off the debt.",
+        "But it is so easy, isn't it?",
+        "The evidence of child trafficking...the bodies of multiple killed soldiers and employees in the vault...",
+        "This bank was definitely not that simple.",
+        "Somehow, I feel that the creditor also played a role in this.",
+        "(Silence)...",
+        "I'd better forget all this.",
+        "There may be more terrifying forces behind this seemingly simple bank, which I cannot afford to offend."
+    };
+
     void Awake() {
         sceneName = SceneManager.GetActiveScene().name;
         canvasGroup = transform.parent.GetComponent<CanvasGroup>();
@@ -123,6 +135,12 @@ public class Conversation : MonoBehaviour {
                 fadingPanelEnd = false;
                 conversationStartMode = 0;
                 conversationEndMode = 0;
+            } else if (sceneName == "GameFinal02") {
+                conversation = selfTalking;
+                fadingPanelStart = true;
+                fadingPanelEnd = false;
+                conversationStartMode = 0;
+                conversationEndMode = 2;
             } else if (sceneName == "MainGame") {
                 switch(convTextIdx) {
                     case 0:
@@ -281,6 +299,13 @@ public class Conversation : MonoBehaviour {
                     jessCam.enabled = false;
                     mainCam.enabled = true;
                 }
+                break;
+            case 2:
+                fadePanel.SetActive(true);
+                fadingScript.callbackFunction = () => {
+                    // SceneManager.LoadScene("GameFinal03");
+                };
+                fadingScript.FadeTo(1f, 1f);
                 break;
             default:
                 break;

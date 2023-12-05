@@ -8,6 +8,7 @@ public class InGameTransition : MonoBehaviour {
     private BackgroundFading fadingScript;
     private GameObject fadePanel;
     private SceneSounds sceneSounds;
+    private SceneTransition sceneTransitions;
     public int mode = 0;
     public Sprite jackSprite;
     public Sprite youSprite;
@@ -20,6 +21,7 @@ public class InGameTransition : MonoBehaviour {
     void findFadePanel() {
         fadePanel = GameObject.Find("In-Game Transition");
         sceneSounds = fadePanel?.GetComponent<SceneSounds>();
+        sceneTransitions = fadePanel?.GetComponent<SceneTransition>();
         fadePanel = GameObject.Find("FadePanel");
         fadingScript = fadePanel?.GetComponent<BackgroundFading>();
         if (fadingScript == null) fadingScript = fadePanel?.AddComponent<BackgroundFading>();
@@ -49,12 +51,12 @@ public class InGameTransition : MonoBehaviour {
             case 2:
                 if (!hasStarted) {
                     hasStarted = true;
+                    sceneSounds.PlayBGMOnce(2);
                     fadingScript.callbackFunction = () => {
                         disableFadePanel();
-                        sceneSounds.PlayBGMSound(2);
                         finalAnimation();
                     };
-                    fadingScript.FadeTo(0f, 3f);
+                    fadingScript.FadeTo(0f, 1f);
                 }
                 break;
             default:
@@ -82,7 +84,6 @@ public class InGameTransition : MonoBehaviour {
         messages[0].actorId = 0; messages[0].message = "(Shocked) Wait, what was happened here?";
         funcs[0] = (parameters) => {
             SceneSounds sceneSounds = (SceneSounds) parameters[0];
-            sceneSounds?.PlayBGMOnce(2);
             StartCoroutine(WaitOneSecondCoroutine((float) parameters[1], false));
         };
         funcParams[0] = new object[] {sceneSounds, waitingTime};
@@ -97,7 +98,7 @@ public class InGameTransition : MonoBehaviour {
             StartCoroutine(WaitOneSecondCoroutine((float) parameters[0], false));
         }; funcParams[2] = new object[] {waitingTime};
 
-        messages[3].actorId = 1; messages[3].message = "Nice job! Now, get out of that hall before someone found you!";
+        messages[3].actorId = 1; messages[3].message = "Nice job! Now quickly! Bring the money as much as you can and get out of that hall before someone found you!";
         funcs[3] = (parameters) => {
             StartCoroutine(WaitOneSecondCoroutine((float) parameters[0], false));
         }; funcParams[3] = new object[] {waitingTime};
@@ -105,7 +106,6 @@ public class InGameTransition : MonoBehaviour {
         messages[4].actorId = 0; messages[4].message = "(Murmur) I have to leave now before it is too late!";
         funcs[4] = (parameters) => {
             SceneSounds sceneSounds = (SceneSounds) parameters[0];
-            sceneSounds?.PlayBGMOnce(3);
             StartCoroutine(WaitOneSecondCoroutine(2.3f, true));
         }; funcParams[4] = new object[] {sceneSounds};
 
@@ -117,8 +117,10 @@ public class InGameTransition : MonoBehaviour {
         DialogueManager.lockMulti = isEnd;
         if (isEnd) {
             fadePanel.SetActive(true);
+            sceneSounds?.PlayBGMOnce(3);
             fadingScript.callbackFunction = () => {
-                // SceneManager.DropTable("GameOverFinal");
+                sceneTransitions.init(sceneSounds, fadePanel, fadingScript);
+                sceneTransitions.TransitScene("GameFinal02");
             };
             fadingScript.FadeTo(1f, 2f);
         }
