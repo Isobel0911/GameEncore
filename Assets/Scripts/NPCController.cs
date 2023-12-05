@@ -13,8 +13,8 @@ public class NPCController : MonoBehaviour {
     public string NPCName ;
     public Sprite sprite;
     public Sprite spritePlayer;
-    private static Message[] messagesCaught;
-    private static Actor[]   actorsCaught;
+    private Message[] messagesCaught;
+    private Actor[]   actorsCaught;
     private static bool hasCaught = false;
     private BackgroundFading fadingScript;
     private GameObject fadePanel;
