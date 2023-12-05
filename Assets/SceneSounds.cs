@@ -13,8 +13,9 @@ public class SceneSounds : MonoBehaviour {
         string listenPosGameObjectName = "Main Camera";
         GameObject sceneAudio = GameObject.Find(listenPosGameObjectName);
         if (sceneAudio == null) sceneAudio = new GameObject(listenPosGameObjectName);
-        audioSourceNormal = sceneAudio.GetComponent<AudioSource>(); audioSourceNormal.loop = false;
+        audioSourceNormal = sceneAudio.GetComponent<AudioSource>();
         if (audioSourceNormal == null) audioSourceNormal = sceneAudio.AddComponent<AudioSource>();
+        audioSourceNormal.loop = false;
         audioSourceLoop = sceneAudio.AddComponent<AudioSource>(); audioSourceLoop.loop = true;
         AudioListener audioListener = sceneAudio.GetComponent<AudioListener>();
         if (audioListener == null) audioListener = sceneAudio.AddComponent<AudioListener>();
