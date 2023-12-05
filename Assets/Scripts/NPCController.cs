@@ -15,17 +15,12 @@ public class NPCController : MonoBehaviour {
         ac = MainCharacter.GetComponent<AlertController>();
         animator = GetComponent<Animator>();
     }
-
-    void Update() {
-
-        if (ac.alert >= 80) {
-            print("end game/ game over scene");
-            SceneManager.LoadScene("GameOverAlert");
-        }
-    }
         
 
     void Update() {
+        if (ac.alert >= 80) {
+            SceneManager.LoadScene("GameOverAlert");
+        }
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
         Vector3 MainCharacterPosition = MainCharacter.transform.Find("Skeleton/Hips/Spine/Chest/UpperChest/Neck/Head").position;
         Vector3 myPosition = transform.Find("Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head").position;
