@@ -47,8 +47,9 @@ public class AIPathNPC : MonoBehaviour {
     private bool pathInvalid = false;
 
     void Start() {
+        animator = GetComponent<Animator>();
         npcController = GetComponent<NPCController>();
-        playerTransform = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature").transform;
+        playerTransform = GameObject.Find("NestedParentArmature_Unpack/PlayerArmature")?.transform;
         prevWaypointIdx = waypoints.Length - 1;
         audioSource = gameObject.AddComponent<AudioSource>();
         AISounds aiSounds = gameObject.AddComponent<AISounds>();
@@ -94,8 +95,6 @@ public class AIPathNPC : MonoBehaviour {
             // navMeshObstacle.radius = 0.20f;
             // navMeshObstacle.carving = true;
         }
-
-        animator = GetComponent<Animator>();
         isWaiting = false;
     }
 
@@ -165,7 +164,7 @@ public class AIPathNPC : MonoBehaviour {
     private IEnumerator WaitAndPlayNPCAudio(int idx) {
         if (waypoints[idx].audioClips.Length == 0) yield break;
         if (waypoints[idx].audioWaitingTime > 0) yield return new WaitForSeconds(waypoints[idx].audioWaitingTime);
-        audioSource.PlayOneShot(waypoints[idx].audioClips[Random.Range(0, waypoints[idx].audioClips.Length)]);
+        if (audioSource != null && audioSource.enabled) audioSource.PlayOneShot(waypoints[idx].audioClips[Random.Range(0, waypoints[idx].audioClips.Length)]);
     }
     private IEnumerator presetWaiting(int idx) {
         if (isWaiting || waypoints.Length == 0) yield break;
@@ -224,6 +223,7 @@ public class AIPathNPC : MonoBehaviour {
     }
 
     private void updateSoundVolume() {
+        if (playerTransform == null) { return; }
         float distance = Vector3.Distance(transform.position, playerTransform.position);
         distance = Mathf.Clamp(distance, 0.01f, 10.0f);
 

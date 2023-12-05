@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PuzzleInteract : MonoBehaviour, IInteractable
-{
+public class PuzzleInteract : MonoBehaviour, IInteractable {
     public Message[] messages;
-    public Actor[] actors;
+    public Actor[]   actors;
+    public static Message[] messagesCaught;
+    public static Actor[]   actorsCaught;
     // Start is called before the first frame update
     [SerializeField] private string _prompt;
 
@@ -14,6 +15,10 @@ public class PuzzleInteract : MonoBehaviour, IInteractable
 
     public static bool hasSolved = false;
     public static bool hasStarted = false;
+
+    public void Awake() {
+        
+    }
 
     public bool Interact(Interactor interactor) {
         // Open puzzle scene
@@ -27,5 +32,18 @@ public class PuzzleInteract : MonoBehaviour, IInteractable
             FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
         }
         return true;
+    }
+    public static void PuzzleCaught(string name, Sprite sprite) {
+        SceneManager.UnloadSceneAsync("SlidingTilePuzzle");
+        foreach (Actor actor in actorsCaught) {
+            if (actor.name == "") {
+                actor.name = name;
+                actor.sprite = sprite;
+            }
+        }
+        FindObjectOfType<DialogueManager>().OpenDialogue(messagesCaught, actorsCaught);
+    }
+    public static void loadScene() {
+        
     }
 }
