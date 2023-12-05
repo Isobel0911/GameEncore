@@ -16,10 +16,18 @@ public class NPCController : MonoBehaviour {
     private static Message[] messagesCaught;
     private static Actor[]   actorsCaught;
     private static bool hasCaught = false;
+    private BackgroundFading fadingScript;
+    private GameObject fadePanel;
 
-    void Start() {
+    void Awake() {
+        fadePanel = GameObject.Find("FadePanel");
+        fadingScript = fadePanel?.GetComponent<BackgroundFading>();
+        if (fadingScript == null) fadingScript = fadePanel?.AddComponent<BackgroundFading>();
         ac = MainCharacter.GetComponent<AlertController>();
         animator = GetComponent<Animator>();
+    }
+
+    void Start() {
         string additionStr = "";
         if (NPCName == "FBI") {
             additionStr = " and surrender right now!";
@@ -44,8 +52,14 @@ public class NPCController : MonoBehaviour {
             hasCaught = true;
             FindObjectOfType<DialogueManager>().OpenDialogue(messagesCaught, actorsCaught, true,
                 (object[] parameters) => {
-                    SceneManager.LoadScene("GameOverAlert");
-                }, new object[0]);
+                    GameObject fadePanel = (GameObject)parameters[0];
+                    BackgroundFading fadingScript = (BackgroundFading)parameters[1];
+                    fadePanel.SetActive(true);
+                    fadingScript.callbackFunction = () => {
+                        SceneManager.LoadScene("GameOverAlert");
+                    };
+                    fadingScript.FadeTo(1f, 1f);
+                }, new object[] {fadePanel, fadingScript});
             return;
         }
         float decreaseConstant = 0.002f; // this is changed based on different people, caution factor
@@ -79,8 +93,14 @@ public class NPCController : MonoBehaviour {
                     hasCaught = true;
                     FindObjectOfType<DialogueManager>().OpenDialogue(messagesCaught, actorsCaught, true,
                         (object[] parameters) => {
-                            SceneManager.LoadScene("GameOverAlert");
-                        }, new object[0]);
+                            GameObject fadePanel = (GameObject)parameters[0];
+                            BackgroundFading fadingScript = (BackgroundFading)parameters[1];
+                            fadePanel.SetActive(true);
+                            fadingScript.callbackFunction = () => {
+                                SceneManager.LoadScene("GameOverAlert");
+                            };
+                            fadingScript.FadeTo(1f, 1f);
+                        }, new object[] {fadePanel, fadingScript});
                     return;
                 }
                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) {

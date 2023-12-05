@@ -14,8 +14,8 @@ public class InGameTransition : MonoBehaviour {
 
     void findFadePanel() {
         fadePanel = GameObject.Find("FadePanel");
-        fadingScript = fadePanel.GetComponent<BackgroundFading>();
-        if (fadingScript == null) fadingScript = fadePanel.AddComponent<BackgroundFading>();
+        fadingScript = fadePanel?.GetComponent<BackgroundFading>();
+        if (fadingScript == null) fadingScript = fadePanel?.AddComponent<BackgroundFading>();
     }
 
     // Update is called once per frame

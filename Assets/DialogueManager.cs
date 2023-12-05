@@ -95,7 +95,6 @@ public class DialogueManager : MonoBehaviour {
             // close dialogue
             Debug.Log("close");
             isActive = false;
-            playerInput.ActivateInput();
             backgroundBox.LeanScale(Vector3.zero, 0.5f)
                          .setEaseInOutExpo()
                          .setOnComplete(OnAnimationComplete);
@@ -110,6 +109,8 @@ public class DialogueManager : MonoBehaviour {
     private void OnAnimationComplete() {
         if (callbackFunction != null) {
             callbackFunction(callbackParams);
+        } else {
+            playerInput.ActivateInput();
         }
     }
 }
